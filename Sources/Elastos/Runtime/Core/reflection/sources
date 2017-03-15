@@ -1,0 +1,69 @@
+#=========================================================================
+# Copyright (C) 2012 The Elastos Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#=========================================================================
+
+TARGET_NAME= reflection
+TARGET_TYPE= lib
+
+C_DEFINES= -D_CAR_RUNTIME
+
+ifeq "$(XDK_TARGET_PLATFORM)" "android"
+C_FLAGS += -O0
+endif
+
+INCLUDESTEMP := $(INCLUDES);
+INCLUDES = $(MAKEDIR)/../inc;
+INCLUDES += $(INCLUDESTEMP);
+
+ifeq "$(XDK_TARGET_CPU)" "arm"
+ifneq "$(XDK_COMPILER)" "gnu"
+SOURCES = invoke_ievc.asm
+else
+SOURCES = invoke_gnuc.S
+endif
+else
+SOURCES = invoke.cpp
+endif
+
+SOURCES += CClsModule.cpp
+SOURCES += CObjInfoList.cpp
+SOURCES += CEntryList.cpp
+SOURCES += refutil.cpp
+SOURCES += reflection.cpp
+SOURCES += CAnnotationInfo.cpp
+SOURCES += CArgumentList.cpp
+SOURCES += CCallbackArgumentList.cpp
+SOURCES += CCallbackMethodInfo.cpp
+SOURCES += CCarArrayInfo.cpp
+SOURCES += CVariableOfCarArray.cpp
+SOURCES += CClassInfo.cpp
+SOURCES += CConstantInfo.cpp
+SOURCES += CConstructorInfo.cpp
+SOURCES += CCppVectorInfo.cpp
+SOURCES += CDelegateProxy.cpp
+SOURCES += CEnumInfo.cpp
+SOURCES += CEnumItemInfo.cpp
+SOURCES += CFieldInfo.cpp
+SOURCES += CInterfaceInfo.cpp
+SOURCES += CIntrinsicInfo.cpp
+SOURCES += CLocalPtrInfo.cpp
+SOURCES += CLocalTypeInfo.cpp
+SOURCES += CMethodInfo.cpp
+SOURCES += CModuleInfo.cpp
+SOURCES += CParamInfo.cpp
+SOURCES += CStructInfo.cpp
+SOURCES += CVariableOfStruct.cpp
+SOURCES += CVariableOfCppVector.cpp
+SOURCES += CTypeAliasInfo.cpp

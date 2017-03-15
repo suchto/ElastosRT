@@ -1,0 +1,826 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    merge("security/Exceptions.car");
+    merge("security/IKey.car");
+    merge("security/IPublicKey.car");
+    merge("security/IPrivateKey.car");
+    merge("security/IPrincipal.car");
+
+    merge("security/acl/Exceptions.car");
+    merge("security/acl/IOwner.car");
+    merge("security/acl/IAcl.car");
+    merge("security/acl/IAclEntry.car");
+    merge("security/acl/IGroup.car");
+    merge("security/acl/IPermission.car");
+
+    merge("security/cert/Extension.car");
+    merge("security/cert/Exceptions.car");
+    merge("security/cert/CRLReason.car");
+    merge("security/cert/ICertificate.car");
+    merge("security/cert/IX509Certificate.car");
+    merge("security/cert/ICRL.car");
+    merge("security/cert/ICRLSelector.car");
+    merge("security/cert/ICertPath.car");
+    merge("security/cert/ICertPathParameters.car");
+    merge("security/cert/ICertPathValidatorResult.car");
+    merge("security/cert/ICertPathBuilderResult.car");
+    merge("security/cert/ICertPathBuilderSpi.car");
+    merge("security/cert/ICertPathBuilder.car");
+    merge("security/cert/ICertPathValidator.car");
+    merge("security/cert/ICertPathValidatorSpi.car");
+    merge("security/cert/ICertSelector.car");
+    merge("security/cert/ICertStore.car");
+    merge("security/cert/ICertStoreParameters.car");
+    merge("security/cert/ICertStoreSpi.car");
+    merge("security/cert/ICertificateFactory.car");
+    merge("security/cert/ICertificateFactorySpi.car");
+    merge("security/cert/ICollectionCertStoreParameters.car");
+    merge("security/cert/ILDAPCertStoreParameters.car");
+    merge("security/cert/IPKIXParameters.car");
+    merge("security/cert/IPKIXBuilderParameters.car");
+    merge("security/cert/IPolicyNode.car");
+    merge("security/cert/ITrustAnchor.car");
+    merge("security/cert/IPKIXCertPathValidatorResult.car");
+    merge("security/cert/IPKIXCertPathBuilderResult.car");
+    merge("security/cert/IPKIXCertPathChecker.car");
+    merge("security/cert/IPolicyQualifierInfo.car");
+    merge("security/cert/IX509CRL.car");
+    merge("security/cert/IX509Extension.car");
+    merge("security/cert/IX509CRLEntry.car");
+    merge("security/cert/IX509CRLSelector.car");
+    merge("security/cert/IX509CertSelector.car");
+
+    merge("security/spec/IRSAOtherPrimeInfo.car");
+
+    merge("security/interfaces/IDSAKey.car");
+    merge("security/interfaces/IDSAKeyPairGenerator.car");
+    merge("security/interfaces/IDSAParams.car");
+    merge("security/interfaces/IDSAPrivateKey.car");
+    merge("security/interfaces/IDSAPublicKey.car");
+    merge("security/interfaces/IECKey.car");
+    merge("security/interfaces/IECPrivateKey.car");
+    merge("security/interfaces/IECPublicKey.car");
+    merge("security/interfaces/IRSAKey.car");
+    merge("security/interfaces/IRSAPrivateKey.car");
+    merge("security/interfaces/IRSAMultiPrimePrivateCrtKey.car");
+    merge("security/interfaces/IRSAPrivateCrtKey.car");
+    merge("security/interfaces/IRSAPublicKey.car");
+
+    merge("security/spec/Exceptions.car");
+    merge("security/spec/IAlgorithmParameterSpec.car");
+    merge("security/spec/IDSAParameterSpec.car");
+    merge("security/spec/IKeySpec.car");
+    merge("security/spec/IDSAPrivateKeySpec.car");
+    merge("security/spec/IDSAPublicKeySpec.car");
+    merge("security/spec/IECField.car");
+    merge("security/spec/IECFieldF2m.car");
+    merge("security/spec/IECFieldFp.car");
+    merge("security/spec/IECGenParameterSpec.car");
+    merge("security/spec/IECParameterSpec.car");
+    merge("security/spec/IECPoint.car");
+    merge("security/spec/IECPrivateKeySpec.car");
+    merge("security/spec/IECPublicKeySpec.car");
+    merge("security/spec/IEllipticCurve.car");
+    merge("security/spec/IEncodedKeySpec.car");
+    merge("security/spec/IMGF1ParameterSpec.car");
+    merge("security/spec/IPKCS8EncodedKeySpec.car");
+    merge("security/spec/IPSSParameterSpec.car");
+    merge("security/spec/IPublicKey.car");
+    merge("security/spec/IRSAKeyGenParameterSpec.car");
+    merge("security/spec/IRSAPrivateKeySpec.car");
+    merge("security/spec/IRSAMultiPrimePrivateCrtKeySpec.car");
+    merge("security/spec/IRSAPrivateCrtKeySpec.car");
+    merge("security/spec/IRSAPublicKeySpec.car");
+    merge("security/spec/IX509EncodedKeySpec.car");
+
+    merge("security/IAccessControlContext.car");
+    merge("security/AlgorithmParameterGeneratorSpi.car");
+    merge("security/IAccessController.car");
+    merge("security/IAlgorithmParameterGenerator.car");
+    merge("security/IAlgorithmParameters.car");
+    merge("security/IProvider.car");
+    merge("security/IAuthProvider.car");
+    merge("security/ICertificate.car");
+    merge("security/ITimestamp.car");
+    merge("security/ICodeSigner.car");
+    merge("security/ICodeSource.car");
+    merge("security/IDigestInputStream.car");
+    merge("security/IDigestOutputStream.car");
+    merge("security/IDomainCombiner.car");
+    merge("security/IGuard.car");
+    merge("security/IGuardedObject.car");
+    merge("security/IIdentity.car");
+    merge("security/IIdentityScope.car");
+    merge("security/IKeyFactory.car");
+    merge("security/IKeyFactorySpi.car");
+    merge("security/IKeyPair.car");
+    merge("security/IKeyPairGenerator.car");
+    merge("security/IKeyPairGeneratorSpi.car");
+    merge("security/IKeyRep.car");
+    merge("security/IKeyStore.car");
+    merge("security/IKeyStoreSpi.car");
+    merge("security/IMessageDigest.car");
+    merge("security/IMessageDigestSpi.car");
+    merge("security/IPermission.car");
+    merge("security/IPermissionCollection.car");
+    merge("security/IPolicy.car");
+    merge("security/IPrivilegedAction.car");
+    merge("security/IPrivilegedExceptionAction.car");
+    merge("security/IProtectionDomain.car");
+    merge("security/ISecureRandom.car");
+    merge("security/ISecureRandomSpi.car");
+    merge("security/ISecurity.car");
+    merge("security/ISignatureSpi.car");
+    merge("security/ISignature.car");
+    merge("security/ISignedObject.car");
+    merge("security/ISigner.car");
+    merge("security/IUnresolvedPermission.car");
+
+    interface Elastos.Core.ICloneable;
+    interface Elastos.IO.ICloseable;
+    interface Elastos.IO.IFilterInputStream;
+    interface Elastos.IO.IFilterOutputStream;
+    interface Elastos.IO.IFlushable;
+    interface Elastos.IO.IInputStream;
+    interface Elastos.IO.IOutputStream;
+    interface Elastos.IO.ISerializable;
+    interface Elastos.Math.IBigInteger;
+    interface Elastos.Net.IURL;
+    interface Elastos.Security.IKeyStore;
+    interface Elastos.Security.IPublicKey;
+    interface Elastos.Security.Cert.ICertPath;
+    interface Elastos.Security.Interfaces.IDSAParams;
+    interface Elastos.Utility.ICollection;
+    interface Elastos.Utility.IDate;
+    interface Elastos.Utility.IMap;
+    interface Elastos.Utility.IList;
+    interface Elastos.Utility.IRandom;
+    interface Elastos.Utility.ISet;
+    interface Elastosx.Crypto.ISecretKey;
+    interface Elastosx.Security.Auth.X500.IX500Principal;
+
+    namespace Elastos {
+    namespace Security {
+
+    class CProviderService {
+        /**
+         * Constructs a new instance of {@code Service} with the given
+         * attributes.
+         *
+         * @param provider
+         *            the provider to which this service belongs.
+         * @param type
+         *            the type of this service (for example {@code
+         *            KeyPairGenerator}).
+         * @param algorithm
+         *            the algorithm this service implements.
+         * @param className
+         *            the name of the class implementing this service.
+         * @param aliases
+         *            {@code List} of aliases for the algorithm name, or {@code
+         *            null} if the implemented algorithm has no aliases.
+         * @param attributes
+         *            {@code Map} of additional attributes, or {@code null} if
+         *            this {@code Service} has no attributed.
+         * @throws NullPointerException
+         *             if {@code provider, type, algorithm} or {@code className}
+         *             is {@code null}.
+         */
+        constructor(
+            [in] IProvider* provider,
+            [in] String type,
+            [in] String algorithm,
+            [in] String className,
+            [in] IList* aliases,
+            [in] IMap* attributes);
+
+        interface IProviderService;
+    }
+
+    singleton class CSecurity {
+        interface ISecurity;
+    }
+
+    singleton class CSignatureHelper {
+        interface ISignatureHelper;
+    }
+
+    singleton class CMessageDigestHelper {
+        interface IMessageDigestHelper;
+    }
+
+    [local, deprecated]
+    class CAccessControlContext {
+        constructor(
+            [in] IAccessControlContext *acc,
+            [in] IDomainCombiner *combiner);
+
+        constructor(
+            [in] ArrayOf<IProtectionDomain*> *context);
+
+        interface IAccessControlContext;
+    }
+
+    singleton class CAccessController {
+        interface IAccessController;
+    }
+
+    singleton class CAlgorithmParametersHelper {
+        interface IAlgorithmParametersHelper;
+    }
+
+    class CAlgorithmParameterGenerator {
+        constructor(
+            [in] IAlgorithmParameterGeneratorSpi* paramGenSpi,
+            [in] IProvider* provider,
+            [in] String algorithm);
+
+        interface IAlgorithmParameterGenerator;
+    }
+
+    [deprecated]
+    class CSecureRandom {
+        constructor();
+
+        constructor(
+            [in] ArrayOf<Byte>* seed);
+
+        constructor(
+            [in] ISecureRandomSpi* secureRandomSpi,
+            [in] IProvider* provider,
+            [in] String algorithm);
+
+        constructor(
+            [in] ISecureRandomSpi* secureRandomSpi,
+            [in] IProvider* provider);
+
+        interface IRandom;
+        interface ISecureRandom;
+    }
+
+    singleton class CSecureRandomHelper {
+        interface ISecureRandomHelper;
+    }
+
+    class CAllPermission {
+        constructor();
+
+        constructor(
+            [in] String name,
+            [in] String actions);
+
+        interface IPermission;
+    }
+
+    class CCodeSigner {
+        constructor();
+
+        constructor(
+            [in] ICertPath* signerCertPath,
+            [in] ITimestamp* timestamp);
+
+        interface ICodeSigner;
+        interface ISerializable;
+    }
+
+    [deprecated]
+    class CCodeSource {
+        constructor(
+            [in] IURL* location,
+            [in] ArrayOf<ICertificate*>* certs);
+
+        constructor(
+            [in] IURL* location,
+            [in] ArrayOf<ICodeSigner*>* signers);
+
+        interface ICodeSource;
+        interface ISerializable;
+    }
+
+    class CDigestInputStream {
+        constructor(
+            [in] IInputStream* stream,
+            [in] IMessageDigest* digest);
+
+        interface IDigestInputStream;
+        interface IFilterInputStream;
+        interface ICloseable;
+        interface IInputStream;
+    }
+
+    class CDigestOutputStream {
+        interface IDigestOutputStream;
+        interface IFilterOutputStream;
+        interface ICloseable;
+        interface IFlushable;
+        interface IOutputStream;
+    }
+
+    class CGuardedObject {
+        constructor(
+            [in] IInterface* object,
+            [in] IGuard* guard);
+
+        interface IGuardedObject;
+        interface ISerializable;
+    }
+
+    class CKeyFactory {
+        constructor(
+            [in] IKeyFactorySpi* keyFacSpi,
+            [in] IProvider* provider,
+            [in] String algorithm);
+
+        interface IKeyFactory;
+    }
+
+    singleton class CKeyFactoryHelper {
+        interface IKeyFactoryHelper;
+    }
+
+    class CKeyPair {
+        constructor(
+            [in] IPublicKey* publicKey,
+            [in] IPrivateKey* privateKey);
+
+        interface IKeyPair;
+        interface ISerializable;
+    }
+
+    singleton class CKeyPairGeneratorHelper {
+        interface IKeyPairGeneratorHelper;
+    }
+
+    [deprecated]
+    class CKeyRep {
+        constructor(
+        [in] KeyRepType type,
+        [in] String algorithm,
+        [in] String format,
+        [in] ArrayOf<Byte>* encoded);
+
+        interface ISerializable;
+    }
+
+    singleton class CKeyStoreHelper {
+        interface IKeyStoreHelper;
+    }
+
+    [deprecated]
+    class CKeyStorePrivateKeyEntry {
+        constructor(
+            [in] IPrivateKey *privateKey,
+            [in] ArrayOf<Elastos.Security.Cert.ICertificate*> *chain);
+
+        interface IKeyStorePrivateKeyEntry;
+        interface IKeyStoreEntry;
+    }
+
+    class CKeyStoreSecretKeyEntry {
+        constructor(
+            [in] ISecretKey *secretKey);
+
+        interface IKeyStoreSecretKeyEntry;
+        interface IKeyStoreEntry;
+    }
+
+    class CKeyStoreTrustedCertificateEntry {
+        constructor(
+            [in] Elastos.Security.Cert.ICertificate* trustCertificate);
+
+        interface IKeyStoreTrustedCertificateEntry;
+        interface IKeyStoreEntry;
+    }
+
+    class CPermissions {
+        interface IPermissionCollection;
+        interface ISerializable;
+    }
+
+    class CPermissionsHash {
+        interface IPermissionCollection;
+        interface ISerializable;
+    }
+
+    [deprecated]
+    class CUnresolvedPermission {
+        constructor(
+            [in] String type,
+            [in] String name,
+            [in] String actions,
+            [in] ArrayOf<Elastos.Security.Cert.ICertificate*>* certs);
+
+        interface IUnresolvedPermission;
+        interface IPermission;
+        interface IGuard;
+        interface ISerializable;
+    }
+
+    class CTimestamp {
+        constructor(
+            [in] IDate* timestamp,
+            [in] ICertPath* signerCertPath);
+
+        interface ITimestamp;
+        interface ISerializable;
+    }
+
+    class CSignedObject {
+        constructor(
+            [in] ISerializable* object,
+            [in] IPrivateKey* signingKey,
+            [in] ISignature* signingEngine);
+
+        interface ISignedObject;
+        interface ISerializable;
+    }
+
+    namespace Cert {
+
+    singleton class CCertificateFactoryHelper {
+        interface ICertificateFactoryHelper;
+    }
+
+    class CCollectionCertStoreParameters {
+        constructor();
+
+        constructor(
+            [in] ICollection* collection);
+
+        interface ICollectionCertStoreParameters;
+        interface ICertStoreParameters;
+        interface ICloneable;
+    }
+
+    class CLDAPCertStoreParameters {
+        constructor(
+            [in] String serverName,
+            [in] Int32 port);
+
+        constructor();
+
+        constructor(
+            [in] String serverName);
+
+        interface ILDAPCertStoreParameters;
+        interface ICertStoreParameters;
+        interface ICloneable;
+    }
+
+    class CPKIXParameters {
+        constructor();
+
+        constructor(
+            [in] ISet* trustAnchors);
+
+        constructor(
+            [in] IKeyStore* keyStore);
+
+        interface IPKIXParameters;
+        interface ICertPathParameters;
+        interface ICloneable;
+    }
+
+    class CPKIXBuilderParameters {
+        constructor();
+
+        constructor(
+            [in] ISet* trustAnchors,
+            [in] ICertSelector* targetConstraints);
+
+        constructor(
+            [in] IKeyStore* keyStore,
+            [in] ICertSelector* targetConstraints);
+
+        interface IPKIXBuilderParameters;
+        interface IPKIXParameters;
+        interface ICertPathParameters;
+        interface ICloneable;
+    }
+
+    [deprecated]
+    class CTrustAnchor {
+        constructor(
+            [in] IX509Certificate* trustedCert,
+            [in] ArrayOf<Byte> *nameConstraints);
+
+        constructor(
+            [in] String caName,
+            [in] IPublicKey* caPublicKey,
+            [in] ArrayOf<Byte> *nameConstraints);
+
+        constructor(
+            [in] IX500Principal* caPrincipal,
+            [in] IPublicKey* caPublicKey,
+            [in] ArrayOf<Byte> *nameConstraints);
+
+        interface ITrustAnchor;
+    }
+
+    class CPKIXCertPathBuilderResult {
+        constructor(
+            [in] ICertPath* certPath,
+            [in] ITrustAnchor* trustAnchor,
+            [in] IPolicyNode* policyTree,
+            [in] IPublicKey* subjectPublicKey);
+
+        interface IPKIXCertPathBuilderResult;
+        interface IPKIXCertPathValidatorResult;
+        interface ICertPathValidatorResult;
+        interface ICertPathBuilderResult;
+        interface ICloneable;
+    }
+
+    class CPKIXCertPathValidatorResult {
+        constructor(
+            [in] ITrustAnchor* trustAnchor,
+            [in] IPolicyNode* policyTree,
+            [in] IPublicKey* subjectPublicKey);
+
+        interface IPKIXCertPathValidatorResult;
+        interface ICertPathValidatorResult;
+        interface ICloneable;
+    }
+
+    [deprecated]
+    class CPolicyQualifierInfo {
+        constructor(
+            [in] ArrayOf<Byte> *encoded);
+
+        interface IPolicyQualifierInfo;
+    }
+
+    class CX509CRLSelector {
+        constructor();
+
+        interface IX509CRLSelector;
+        interface ICRLSelector;
+        interface ICloneable;
+    }
+
+    class CX509CertSelector {
+        constructor();
+
+        interface IX509CertSelector;
+        interface ICertSelector;
+        interface ICloneable;
+    }
+
+    } // namespace Cert
+
+
+    namespace Spec {
+    class CDSAParameterSpec {
+        constructor(
+            [in] IBigInteger *p,
+            [in] IBigInteger *q,
+            [in] IBigInteger *g);
+
+        interface IDSAParameterSpec;
+        interface IAlgorithmParameterSpec;
+        interface IDSAParams;
+    }
+
+    class CDSAPrivateKeySpec {
+        constructor(
+            [in] IBigInteger *x,
+            [in] IBigInteger *p,
+            [in] IBigInteger *q,
+            [in] IBigInteger *g);
+
+        interface IDSAPrivateKeySpec;
+        interface IKeySpec;
+    }
+
+    class CDSAPublicKeySpec {
+        constructor(
+            [in] IBigInteger *y,
+            [in] IBigInteger *p,
+            [in] IBigInteger *q,
+            [in] IBigInteger *g);
+
+        interface IDSAPublicKeySpec;
+        interface IKeySpec;
+    }
+
+    [deprecated]
+    class CECFieldF2m {
+        constructor(
+            [in] Int32 m);
+
+        constructor(
+            [in] Int32 m,
+            [in] IBigInteger *rp);
+
+        constructor(
+            [in] Int32 m,
+            [in] ArrayOf<Int32> *ks);
+
+        interface IECFieldF2m;
+        interface IECField;
+    }
+
+    class CECFieldFp {
+        constructor(
+            [in] IBigInteger *p);
+
+        interface IECFieldFp;
+        interface IECField;
+    }
+
+    class CECGenParameterSpec {
+        constructor(
+            [in] String name);
+
+        interface IECGenParameterSpec;
+        interface IAlgorithmParameterSpec;
+    }
+
+    class CECParameterSpec {
+        constructor(
+            [in] IEllipticCurve *curve,
+            [in] IECPoint *generator,
+            [in] IBigInteger *order,
+            [in] Int32 cofactor);
+
+        interface IECParameterSpec;
+        interface IAlgorithmParameterSpec;
+    }
+
+    class CECPoint {
+        constructor();
+
+        constructor(
+            [in] IBigInteger *affineX,
+            [in] IBigInteger *affineY);
+
+        interface IECPoint;
+    }
+
+    class CECPrivateKeySpec {
+        constructor(
+            [in] IBigInteger *s,
+            [in] IECParameterSpec *params);
+
+        interface IECPrivateKeySpec;
+        interface IKeySpec;
+    }
+
+    class CECPublicKeySpec {
+        constructor(
+            [in] IECPoint *w,
+            [in] IECParameterSpec *params);
+
+        interface IECPublicKeySpec;
+        interface IKeySpec;
+    }
+
+    [deprecated]
+    class CEllipticCurve {
+        constructor(
+            [in] IECField *field,
+            [in] IBigInteger *a,
+            [in] IBigInteger *b,
+            [in] ArrayOf<Byte> *seed);
+
+        constructor(
+            [in] IECField *field,
+            [in] IBigInteger *a,
+            [in] IBigInteger *b);
+
+        interface IEllipticCurve;
+    }
+
+    class CMGF1ParameterSpec {
+       constructor(
+            [in] String mdName);
+
+        interface IMGF1ParameterSpec;
+        interface IAlgorithmParameterSpec;
+    }
+
+    [deprecated]
+    class CPKCS8EncodedKeySpec {
+        constructor(
+            [in] ArrayOf<Byte> *encodedKey);
+
+        interface IPKCS8EncodedKeySpec;
+        interface IEncodedKeySpec;
+        interface IKeySpec;
+    }
+
+    class CPSSParameterSpec {
+        constructor(
+            [in] Int32 saltLen);
+        constructor(
+            [in] String mdName,
+            [in] String mgfName,
+            [in] IAlgorithmParameterSpec *mgfSpec,
+            [in] Int32 saltLen,
+            [in] Int32 trailerField);
+
+        interface IPSSParameterSpec;
+        interface IAlgorithmParameterSpec;
+    }
+
+    class CRSAKeyGenParameterSpec {
+        constructor(
+            [in] Int32 keysize,
+            [in] IBigInteger *publicExponent);
+
+        interface IRSAKeyGenParameterSpec;
+        interface IAlgorithmParameterSpec;
+    }
+
+    [deprecated]
+    class CRSAMultiPrimePrivateCrtKeySpec {
+        constructor(
+            [in] IBigInteger *modulus,
+            [in] IBigInteger *publicExponent,
+            [in] IBigInteger *privateExponent,
+            [in] IBigInteger *primeP,
+            [in] IBigInteger *primeQ,
+            [in] IBigInteger *primeExponentP,
+            [in] IBigInteger *primeExponentQ,
+            [in] IBigInteger *crtCoefficient,
+            [in] ArrayOf<IRSAOtherPrimeInfo*> *otherPrimeInfo);
+
+        interface IRSAMultiPrimePrivateCrtKeySpec;
+        interface IRSAPrivateKeySpec;
+        interface IKeySpec;
+    }
+
+    class CRSAOtherPrimeInfo {
+        constructor(
+            [in] IBigInteger *prime,
+            [in] IBigInteger *primeExponent,
+            [in] IBigInteger *crtCoefficient);
+
+        interface IRSAOtherPrimeInfo;
+    }
+
+    class CRSAPrivateCrtKeySpec {
+        constructor(
+            [in] IBigInteger *modulus,
+            [in] IBigInteger *publicExponent,
+            [in] IBigInteger *privateExponent,
+            [in] IBigInteger *primeP,
+            [in] IBigInteger *primeQ,
+            [in] IBigInteger *primeExponentP,
+            [in] IBigInteger *primeExponentQ,
+            [in] IBigInteger *crtCoefficient);
+
+        interface IRSAPrivateCrtKeySpec;
+        interface IRSAPrivateKeySpec;
+        interface IKeySpec;
+    }
+
+    class CRSAPrivateKeySpec {
+        constructor(
+            [in] IBigInteger *modulus,
+            [in] IBigInteger *privateExponent);
+
+        interface IRSAPrivateKeySpec;
+        interface IKeySpec;
+    }
+
+    class CRSAPublicKeySpec {
+        constructor(
+            [in] IBigInteger *modulus,
+            [in] IBigInteger *publicExponent);
+
+        interface IRSAPublicKeySpec;
+        interface IKeySpec;
+    }
+
+    [deprecated]
+    class CX509EncodedKeySpec {
+        constructor(
+            [in] ArrayOf<Byte> *encodedKey);
+
+        interface IX509EncodedKeySpec;
+        interface IEncodedKeySpec;
+        interface IKeySpec;
+    }
+
+    } // namespace Spec
+
+    } // namespace Security
+    } // namespace Elastos
+}

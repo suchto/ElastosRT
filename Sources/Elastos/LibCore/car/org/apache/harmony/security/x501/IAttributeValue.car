@@ -1,0 +1,99 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Core.IStringBuilder;
+    interface Elastos.Utility.ICollection;
+    interface Org.Apache.Harmony.Security.Asn1.IASN1Type;
+
+    namespace Org {
+    namespace Apache {
+    namespace Harmony {
+    namespace Security {
+    namespace X501 {
+
+    /**
+     * X.501 Attribute Value
+     */
+    [deprecated]
+    interface IAttributeValue {
+        GetTag(
+            [out] Int32* tag);
+
+        GetHexString(
+            [out] String* hexString);
+
+        GetValues(
+            [in] IASN1Type* type,
+            [out] ICollection** values);
+
+        AppendQEString(
+            [in] IStringBuilder* sb);
+
+        MakeCanonical(
+            [out] String* cannonical);
+
+        /**
+         * Removes escape sequences used in RFC1779 escaping but not in RFC2253 and
+         * returns the RFC2253 string to the caller..
+         */
+        GetRFC2253String(
+            [out] String* rfcString);
+
+        GetWasEncoded(
+            [out] Boolean* wasEncoded);
+
+        SetWasEncoded(
+            [in] Boolean wasEncoded);
+
+        GetEscapedString(
+            [out] String* escapedString);
+
+        SetEscapedString(
+            [in] String escapedString);
+
+        GetEncoded(
+            [out, callee] ArrayOf<Byte>* encoded);
+
+        SetEncoded(
+            [in] ArrayOf<Byte>* encoded);
+
+        GetBytes(
+            [out, callee] ArrayOf<Byte>* bytes);
+
+        SetBytes(
+            [in] ArrayOf<Byte>* bytes);
+
+        GetHasQE(
+            [out] Boolean* hasQE);
+
+        SetHasQE(
+            [in] Boolean hasQE);
+
+        GetRawString(
+            [out] String* rawString);
+
+        SetRawString(
+            [in] String rawString);
+    }
+
+    } // namespace X501
+    } // namespace Security
+    } // namespace Harmony
+    } // namespace Apache
+    } // namespace Org
+}

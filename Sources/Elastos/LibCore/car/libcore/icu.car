@@ -1,0 +1,152 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    merge("icu/Exceptions.car");
+    merge("icu/ICollationKeyICU.car");
+    merge("icu/ILocaleData.car");
+    merge("icu/IICUUtil.car");
+    merge("icu/IRuleBasedCollatorICU.car");
+    merge("icu/ITimeZoneNames.car");
+    merge("icu/ICollationElementIteratorICU.car");
+    merge("icu/INativeDecimalFormat.car");
+    merge("icu/INativeBreakIterator.car");
+    merge("icu/INativeCollationHelper.car");
+    merge("icu/INativeIDNHelper.car");
+    merge("icu/INativePluralRules.car");
+    merge("icu/INativeNormalizerHelper.car");
+    merge("icu/IAlphabeticIndex.car");
+    merge("icu/IDateIntervalFormat.car");
+    merge("icu/ITransliterator.car");
+    merge("icu/INativeConverterHelper.car");
+
+    interface Elastos.Core.IComparable;
+    interface Elastos.Text.ICollationKey;
+    interface Elastos.Core.ICloneable;
+    interface Elastos.Utility.ILocale;
+    interface Elastos.Text.IDecimalFormatSymbols;
+
+    namespace Libcore {
+    namespace ICU {
+
+    singleton class CCollationElementIteratorICUHelper {
+        interface ICollationElementIteratorICUHelper;
+    }
+
+    singleton class CNativeCollationHelper {
+        interface INativeCollationHelper;
+    }
+
+    [deprecated]
+    class CCollationKeyICU {
+        constructor(
+            [in] String source,
+            [in] ArrayOf<Byte>* ab);
+
+        interface IComparable;
+        interface ICollationKey;
+        interface ICollationKeyICU;
+    }
+
+    class CLocaleData {
+        interface ILocaleData;
+    }
+
+    singleton class CLocaleDataHelper {
+        interface ILocaleDataHelper;
+    }
+
+    singleton class CTimeZoneNames {
+        interface ITimeZoneNames;
+    }
+
+    singleton class CNativeIDNHelper {
+        interface INativeIDNHelper;
+    }
+
+    singleton class CNativeNormalizerHelper {
+        interface INativeNormalizerHelper;
+    }
+
+    class CNativePluralRules {
+        constructor(
+            [in] Int64 address);
+
+        interface INativePluralRules;
+    }
+
+    singleton class CNativePluralRulesHelper {
+        interface INativePluralRulesHelper;
+    }
+
+    class CRuleBasedCollatorICU {
+        constructor(
+            [in] String rules);
+
+        constructor(
+            [in] ILocale * locale);
+
+        interface ICloneable;
+        interface IRuleBasedCollatorICU;
+    }
+
+    singleton class CNativeBreakIteratorHelper {
+        interface INativeBreakIteratorHelper;
+    }
+
+    class CAlphabeticIndex {
+        constructor(
+            [in] ILocale* locale);
+
+        interface IAlphabeticIndex;
+    }
+
+    singleton class CDateIntervalFormat {
+        interface IDateIntervalFormat;
+    }
+
+    class CTransliterator {
+        constructor(
+            [in] String id);
+
+        interface ITransliterator;
+    }
+
+    singleton class CICUUtil {
+        interface IICUUtil;
+    }
+
+    singleton class CNativeConverterHelper {
+        interface INativeConverterHelper;
+    }
+
+    class CNativeDecimalFormat {
+        constructor(
+            [in] String pattern,
+            [in] IDecimalFormatSymbols* dfs);
+
+        constructor(
+            [in] String pattern,
+            [in] ILocaleData* data);
+
+        interface ICloneable;
+        interface INativeDecimalFormat;
+    }
+
+    } // namespace ICU
+    } // namespace LibCore
+}

@@ -1,0 +1,74 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+
+    interface Org.Apache.Http.IProtocolVersion;
+
+    namespace Org {
+    namespace Apache {
+    namespace Http {
+
+    /**
+     * An HTTP connection over the Internet Protocol (IP).
+     *
+     * @author <a href="mailto:oleg at ural.ru">Oleg Kalnichevski</a>
+     *
+     * @version $Revision: 613298 $
+     *
+     * @since 4.0
+     */
+    /**
+     * @Involve
+     * interface IProtocolVersion;
+     * interface ICloneable
+     */
+    interface IHttpVersion {
+
+        /**
+         * Obtains a specific HTTP version.
+         *
+         * @param major     the major version
+         * @param minor     the minor version
+         *
+         * @return  an instance of {@link HttpVersion} with the argument version
+         */
+        ForVersion(
+            [in] Int32 major,
+            [in] Int32 minor,
+            [out] IProtocolVersion** ver);
+
+    }
+
+    interface IHttpVersionHelper {
+
+        GerHttpVersion09(
+            [out] IHttpVersion** ver);
+
+        GerHttpVersion10(
+            [out] IHttpVersion** ver);
+
+        GerHttpVersion11(
+            [out] IHttpVersion** ver);
+
+    }
+
+    } // namespace Http
+    } // namespace Apache
+    } // namespace Org
+
+}

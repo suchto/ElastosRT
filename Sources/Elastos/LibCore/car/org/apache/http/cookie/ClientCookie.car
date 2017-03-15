@@ -1,0 +1,73 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+
+    namespace Org {
+    namespace Apache {
+    namespace Http {
+    namespace Cookie {
+
+    /**
+     * ClientCookie extends the standard {@link Cookie} interface with
+     * additional client specific functionality such ability to retrieve
+     * original cookie attributes exactly as they were specified by the
+     * origin server. This is important for generating the <tt>Cookie</tt>
+     * header because some cookie specifications require that the
+     * <tt>Cookie</tt> header should include certain attributes only if
+     * they were specified in the <tt>Set-Cookie</tt> header.
+     *
+     * @author <a href="mailto:oleg at ural.ru">Oleg Kalnichevski</a>
+     *
+     * @since 4.0
+     */
+    /**
+     * @Involve
+     * interface ICookie;
+     */
+    interface IClientCookie {
+
+        // RFC2109 attributes
+        const String VERSION_ATTR    = "version";
+        const String PATH_ATTR       = "path";
+        const String DOMAIN_ATTR     = "domain";
+        const String MAX_AGE_ATTR    = "max-age";
+        const String SECURE_ATTR     = "secure";
+        const String COMMENT_ATTR    = "comment";
+        const String EXPIRES_ATTR    = "expires";
+
+        // RFC2965 attributes
+        const String PORT_ATTR       = "port";
+        const String COMMENTURL_ATTR = "commenturl";
+        const String DISCARD_ATTR    = "discard";
+
+        GetAttribute(
+            [in] String name,
+            [out] String* attr);
+
+        ContainsAttribute(
+            [in] String name,
+            [out] Boolean* result);
+
+    }
+
+    } // namespace Cookie
+    } // namespace Http
+    } // namespace Apache
+    } // namespace Org
+
+}

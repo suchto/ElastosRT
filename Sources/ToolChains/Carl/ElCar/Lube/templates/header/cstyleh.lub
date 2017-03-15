@@ -1,0 +1,74 @@
+$;;=========================================================================
+$;; Copyright (C) 2012 The Elastos Open Source Project
+$;;
+$;; Licensed under the Apache License, Version 2.0 (the "License");
+$;; you may not use this file except in compliance with the License.
+$;; You may obtain a copy of the License at
+$;;
+$;;      http://www.apache.org/licenses/LICENSE-2.0
+$;;
+$;; Unless required by applicable law or agreed to in writing, software
+$;; distributed under the License is distributed on an "AS IS" BASIS,
+$;; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+$;; See the License for the specific language governing permissions and
+$;; limitations under the License.
+$;;=========================================================================
+$
+$INPUT module
+$OUTPUT "_${name}_c.h"
+$
+$WITH all interfaces DO
+typedef interface ${name} ${name};
+$END DO
+$
+$WITH all interfaces DO
+
+typedef struct ${name}Vtbl {
+    PInterface (CARAPICALLTYPE *Probe)(
+            ${name} *pThis,
+            /* [in] */ REIID riid);
+
+    UInt32 (CARAPICALLTYPE *AddRef)(
+            ${name} *pThis);
+
+    UInt32 (CARAPICALLTYPE *Release)(
+            ${name} *pThis);
+
+    ECode (CARAPICALLTYPE *GetInterfaceID)(
+            ${name} *pThis,
+            /* [in] */ IInterface *object,
+            /* [in] */ InterfaceID *iid);
+$
+$   WITH all parents DO
+$       WITH all methods DO
+
+    ECode (CARAPICALLTYPE *${name})(
+            ${interface.name} *pThis,$^
+$           WITH all parameters DO
+
+            /* [${attrib}] */ ${CStyleParamType(type)} ${CStyleName(parameter)},$^
+$           END DO
+$           Rewrite(")")
+;
+$       END DO ;; all methods
+$   END DO ;; all parents
+$
+$   WITH all methods DO
+
+    ECode (CARAPICALLTYPE *${name})(
+            ${interface.name} *pThis,$^
+$       WITH all parameters DO
+
+            /* [${attrib}] */ ${CStyleParamType(type)} ${CStyleName(parameter)},$^
+$       END DO
+$       Rewrite(")")
+;
+$   END DO ;; all methods
+}   ${name}Vtbl;
+
+interface ${name} {
+    CONST_VTBL struct ${name}Vtbl *v;
+};
+$END DO ;; all interfaces
+$
+$END OUTPUT

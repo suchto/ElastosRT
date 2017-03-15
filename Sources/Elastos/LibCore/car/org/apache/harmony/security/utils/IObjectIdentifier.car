@@ -1,0 +1,99 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Org {
+    namespace Apache {
+    namespace Harmony {
+    namespace Security {
+    namespace Utils {
+
+    /**
+     * Instance of this class represents ObjectIdentifier (OID).
+     *
+     * OID is represented as a sequence of subidentifier.
+     * Each subidentifier is represented as non negative integer value.
+     * There are at least 2 subidentifiers in the sequence.
+     *
+     * Valid values for first subidentifier are 0, 1 and 2.
+     * If the first subidentifier has 0 or 1 value the second
+     * subidentifier MUST be less then 40.
+     *
+     * @see <a href="http://asn1.elibel.tm.fr/en/standards/index.htm">ASN.1</a>
+     */
+    interface IObjectIdentifier {
+        /**
+         * Gets OID.
+         *
+         * @return oid
+         */
+        GetOid(
+            [out, callee] ArrayOf<Int32>* oid);
+
+        /**
+         * Gets OID's name.
+         *
+         * @return name
+         */
+        GetName(
+            [out] String* name);
+
+        /**
+         * Gets OID's group.
+         *
+         * @return group
+         */
+        GetGroup(
+            [out] IInterface** group);
+
+        /**
+         * Add "OID." to the beginning of string representation.
+         *
+         * @return oid as string
+         */
+        ToOIDString(
+            [out] String* str);
+    }
+
+    [deprecated]
+    interface IObjectIdentifierHelper {
+        /**
+         * Validates ObjectIdentifier (OID).
+         *
+         * @param oid - oid as array of integers
+         * @throws NullPointerException     - if oid is null
+         * @throws IllegalArgumentException - if oid is invalid
+         */
+         ValidateOid(
+            [in] ArrayOf<Int32>* oid);
+
+        /**
+         * Returns hash code for array of integers
+         *
+         * @param oid - array of integers
+         */
+        HashIntArray(
+            [in] ArrayOf<Int32>* array,
+            [out] Int32* hash);
+    }
+
+    } // namespace Utils
+    } // namespace Security
+    } // namespace Harmony
+    } // namespace Apache
+    } // namespace Org
+}

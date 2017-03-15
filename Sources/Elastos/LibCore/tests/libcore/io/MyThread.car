@@ -1,0 +1,39 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    importlib("Elastos.CoreLibrary.eco");       // import 依赖库
+
+    using interface Elastos.Core.IThread;
+    using interface Elastos.Core.IRunnable;
+    using interface Elastos.Core.IComparable;
+    using interface Elastos.IO.IFileDescriptor;
+
+//    namespace Elastos {
+//    namespace HelloCar {
+
+    class CMyThread {
+        constructor(
+            [in] IFileDescriptor *ifd);         // 实现 IThread 的 CAR 类必须显式声明 constructor()
+
+        interface IThread;
+        interface IRunnable;                    // 实现 IThread 的 CAR 类必须同时实现 IRunnable
+    }
+
+//    } // HelloCar
+//    } // Elastos
+}

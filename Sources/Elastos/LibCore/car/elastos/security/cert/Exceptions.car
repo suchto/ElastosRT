@@ -1,0 +1,36 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+//    const FAMILY_CORE = 0x2C    // Security exception codes
+
+//    #define FRAMEWORK_ERROR(c)      MAKE_ECODE(SEVERITY_ERROR, FAMILY_FRAMEWORK, c)
+//    #define FRAMEWORK_SUCCESS(c)    MAKE_SUCCESS(FAMILY_FRAMEWORK, c)
+
+    //==========================================================================
+    // Elastos Security exception codes (Family: 0x2C)
+    const E_CERTIFICATE_ENCODING_EXCEPTION                  = 0xAC040000;
+    const E_CERT_CERTIFICATE_EXCEPTION                      = 0xAC050000;
+    const E_CERTIFICATE_EXPIRED_EXCEPTION                   = 0xAC060000;
+    const E_CERTIFICATE_NOT_YET_VALID_EXCEPTION             = 0xAC070000;
+    const E_CERTIFICATE_PARSING_EXCEPTION                   = 0xAC080000;
+    const E_CERT_PATH_BUILDER_EXCEPTION                     = 0xAC090000;
+    const E_CERT_PATH_VALIDATOR_EXCEPTION                   = 0xAC0A0000;
+    const E_CERT_STORE_EXCEPTION                            = 0xAC0B0000;
+    const E_CRL_EXCEPTION                                   = 0xAC0C0000;
+    const E_NOT_SERIALIZABLE_EXCEPTION                      = 0xAC0D0000;
+}

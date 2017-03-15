@@ -1,0 +1,88 @@
+#=========================================================================
+# Copyright (C) 2012 The Elastos Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#=========================================================================
+
+TARGET_NAME= elastos.core
+TARGET_TYPE= lib
+
+C_DEFINES += -DELASTOS_CORELIBRARY
+
+include $(MAKEDIR)/../../sources.inc
+
+INCLUDES += $(PREBUILD_INC)/sys;
+INCLUDES += $(PREBUILD_INC)/fdlibm;
+INCLUDES += ../../corelibrary
+INCLUDES += $(MAKEDIR)/../../../inc/;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/core;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/io;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/io/channels/spi;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/utility;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/utility/regex;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/droid/system;
+INCLUDES += $(MAKEDIR)/../../../inc/libcore/icu;
+INCLUDES += $(MAKEDIR)/../../../inc/libcore/utility;
+
+SOURCES += core.cpp
+SOURCES += Thread.cpp
+SOURCES += NativeThread.cpp
+SOURCES += Object.cpp
+SOURCES += Singleton.cpp
+SOURCES += Runnable.cpp
+SOURCES += ClassLoader.cpp
+
+SOURCES += exportext.cpp
+SOURCES += CString.cpp
+SOURCES += CBoolean.cpp
+SOURCES += CByte.cpp
+SOURCES += CChar32.cpp
+SOURCES += CInteger16.cpp
+SOURCES += CInteger32.cpp
+SOURCES += CInteger64.cpp
+SOURCES += CFloat.cpp
+SOURCES += CDouble.cpp
+SOURCES += CArrayOf.cpp
+SOURCES += CThrowable.cpp
+SOURCES += Init.cpp
+
+SOURCES += ThreadGroup.cpp
+SOURCES += CThread.cpp
+SOURCES += CThreadGroup.cpp
+SOURCES += CPathClassLoader.cpp
+SOURCES += Os.cpp
+SOURCES += BlockGuard.cpp
+SOURCES += CBlockGuard.cpp
+SOURCES += CCloseGuard.cpp
+SOURCES += CCloseGuardHelper.cpp
+SOURCES += Enum.cpp
+SOURCES += CSystem.cpp
+
+SOURCES += Math.cpp
+SOURCES += StrictMath.cpp
+SOURCES += cbigint.cpp
+SOURCES += CoreUtils.cpp
+SOURCES += StringUtils.cpp
+SOURCES += HexStringParser.cpp
+SOURCES += StringToIntegral.cpp
+SOURCES += IntegralToString.cpp
+SOURCES += StringToReal.cpp
+SOURCES += RealToString.cpp
+SOURCES += Character.cpp
+SOURCES += AbstractStringBuilder.cpp
+SOURCES += StringBuffer.cpp
+SOURCES += StringBuilder.cpp
+SOURCES += CaseMapper.cpp
+
+ELASTOS_LIBS += reflect/reflect.lib

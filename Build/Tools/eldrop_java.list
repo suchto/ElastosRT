@@ -1,0 +1,38 @@
+;
+; Purpose: Drop/Pack List for SDK
+;
+; Format:  SrcFile/Folder or
+;          SrcFile/Folder [DestFolder]
+;
+framework.jar           /system/framework
+framework-res.apk       /system/framework
+telephony-common.jar    /system/framework
+libandroid_runtime.so   /system/lib
+libmedia_jni.so         /system/lib
+../Linux/usr/lib/libelwebviewchromium.so        /system/lib
+../Linux/usr/lib/libcamera_client.so            /system/lib
+bootanimation.zip       /system/media
+DownloadProvider        /system/priv-app     dir
+AMapNetworkLocation     /system/priv-app     dir
+Browser                 /system/app          dir
+Camera2                 /system/app          dir
+CalendarProvider        /system/priv-app     dir
+Calendar                /system/app          dir
+Contacts                /system/priv-app     dir
+ContactsProvider        /system/priv-app     dir
+DeskClock               /system/app          dir
+DocumentsUI             /system/app          dir
+DownloadProviderUi      /system/app          dir
+Gallery2                /system/app          dir
+webview                 /system/app          dir
+Mms                     /system/priv-app     dir
+MmsService              /system/priv-app     dir
+Eleven                  /system/app          dir
+com.qualcomm.location   /system/app          dir
+com.qualcomm.services.location  /system/app  dir
+com.example.Location    /system/app          dir
+CMFileManager           /system/app          dir
+KeyChain                /system/app          dir
+WeChat_840.apk          /data/app
+vlc.apk                 /data/app
+OfflineCalendar.apk     /data/app

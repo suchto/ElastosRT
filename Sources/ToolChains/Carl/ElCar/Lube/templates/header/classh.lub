@@ -1,0 +1,67 @@
+$;;=========================================================================
+$;; Copyright (C) 2012 The Elastos Open Source Project
+$;;
+$;; Licensed under the Apache License, Version 2.0 (the "License");
+$;; you may not use this file except in compliance with the License.
+$;; You may obtain a copy of the License at
+$;;
+$;;      http://www.apache.org/licenses/LICENSE-2.0
+$;;
+$;; Unless required by applicable law or agreed to in writing, software
+$;; distributed under the License is distributed on an "AS IS" BASIS,
+$;; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+$;; See the License for the specific language governing permissions and
+$;; limitations under the License.
+$;;=========================================================================
+$
+$INPUT class
+
+$   WITH all interfaces DO
+$       IF attrib is not "callback" and attrib is not "clsobj" and class.type is not "aspect" and attrib is not "filter" and name is not "IObject"
+$IF class.attrib is "singleton"
+    static _ELASTOS ECode AcquireSingleton($^
+$ELSE
+    static _ELASTOS ECode New($^
+$END IF
+/*[out]*/ ${namespace}${name} **pp${name})
+    {
+        return _CObject_CreateInstance(ECLSID_${class.name}, RGM_SAME_DOMAIN, ${namespace}EIID_${name}, (PInterface*)pp${name});
+    }
+
+$IF class.attrib is "singleton"
+    static _ELASTOS ECode AcquireSingletonInDomain($^
+$ELSE
+    static _ELASTOS ECode NewInRegime($^
+$END IF
+/*[in]*/  PRegime pRegime,/*[out]*/ ${namespace}${name} **pp${name})
+    {
+        return _CObject_CreateInstance(ECLSID_${class.name}, pRegime, ${namespace}EIID_${name}, (PInterface*)pp${name});
+    }
+
+$IF class.attrib is "singleton"
+    static _ELASTOS ECode AcquireSingletonInDomain($^
+$ELSE
+    static _ELASTOS ECode NewInRegime($^
+$END IF
+/*[in]*/  PInterface pObject,/*[out]*/ ${namespace}${name} **pp${name})
+    {
+        PRegime pRegime = IRegime::Probe(pObject);
+        if (!pRegime) return E_NO_INTERFACE;
+        return _CObject_CreateInstance(ECLSID_${class.name}, pRegime, ${namespace}EIID_${name}, (PInterface*)pp${name});
+    }
+$       END IF
+
+$   END DO ;; all interfaces
+$   IF class.type is "aspect"
+    static _ELASTOS ECode Attach(/*[in]*/ IInterface* pObj )
+    {
+        return _CObject_AttachAspect(pObj, ECLSID_${name});
+    }
+
+    static _ELASTOS ECode Detach(/*[in]*/ IInterface* pObj )
+    {
+        return _CObject_DetachAspect(pObj, ECLSID_${name});
+    }
+
+$   END IF
+

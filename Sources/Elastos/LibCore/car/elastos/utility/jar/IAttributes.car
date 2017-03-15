@@ -1,0 +1,87 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Elastos {
+    namespace Utility {
+    namespace Jar {
+
+    interface IName {
+        GetName(
+            [out] String* name);
+
+        Equals(
+            [in] IInterface* object,
+            [out] Boolean* result);
+
+        GetHashCode(
+            [out] Int32* hashCode);
+
+        ToString(
+            [out] String* name);
+    }
+
+    interface IAttributes {
+        /**
+         * Returns the value associated with the parameter {@code Attributes.Name}
+         * key.
+         *
+         * @param name
+         *            the key to obtain the value for.
+         * @return the {@code String} associated with name, or {@code null} if name
+         *         is not a valid key.
+         */
+        GetValue(
+            [in] IName* name,
+            [out] String* value);
+
+        /**
+         * Returns the string associated with the parameter name.
+         *
+         * @param name
+         *            the key to obtain the value for.
+         * @return the string associated with name, or {@code null} if name is not a
+         *         valid key.
+         */
+        GetValue(
+            [in] String name,
+            [out] String* value);
+
+        /**
+         * Stores the value {@code val} associated with the key {@code name} in this
+         * {@code Attributes}.
+         *
+         * @param name
+         *            the key to store.
+         * @param val
+         *            the value to store in this {@code Attributes}.
+         * @return the value being stored.
+         */
+        PutValue(
+            [in] String name,
+            [in] String val,
+            [out] String* oldVal);
+
+        PutValue(
+            [in] String name,
+            [in] String val);
+    }
+
+    } //Jar
+    } //Utility
+    } //Elastos
+}

@@ -1,0 +1,45 @@
+#=========================================================================
+# Copyright (C) 2012 The Elastos Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#=========================================================================
+
+TARGET_NAME= carc
+TARGET_TYPE= exe
+
+INCLUDESTEMP := $(INCLUDES);
+INCLUDES += $(MAKEDIR)/../../inc ;
+INCLUDES += $(INCLUDESTEMP);
+
+SOURCES = carc.cpp
+SOURCES += cmdarg.cpp
+SOURCES += carerr.cpp
+SOURCES += token.cpp
+SOURCES += parser.cpp
+SOURCES += StringBuilder.cpp
+SOURCES += carc.rc
+
+ELASTOS_LIBS = ../clsutil/clsutil.lib
+ELASTOS_LIBS += ../clsbase/clsbase.lib
+ifeq "$(XDK_TARGET_PLATFORM)" "win32"
+LIBRARIES += $(XDK_USER_LIB)/libz.lib
+
+EXTERN_LIBS = user32
+EXTERN_LIBS += msvcrt
+EXTERN_LIBS += kernel32
+EXTERN_LIBS += uuid
+EXTERN_LIBS += oleaut32
+else
+LIBRARIES += -lz
+LIBRARIES += -lstdc++
+endif

@@ -1,0 +1,141 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Org.Xml.Sax.IXMLFilter;
+    interface Elastosx.Xml.Transform.ISource;
+    interface Elastosx.Xml.Transform.ITemplates;
+
+    namespace Elastosx {
+    namespace Xml {
+    namespace Transform {
+    namespace Sax {
+
+    /**
+     * @Involve
+     * interface ITransformerFactory;
+     */
+    interface ISAXTransformerFactory {
+        /** If {@link javax.xml.transform.TransformerFactory#getFeature}
+         * returns true when passed this value as an argument,
+         * the TransformerFactory returned from
+         * {@link javax.xml.transform.TransformerFactory#newInstance} may
+         * be safely cast to a SAXTransformerFactory.
+         */
+        const String FEATURE = "http://javax.xml.transform.sax.SAXTransformerFactory/feature";
+
+        /** If {@link javax.xml.transform.TransformerFactory#getFeature}
+         * returns true when passed this value as an argument,
+         * the {@link #newXMLFilter(Source src)}
+         * and {@link #newXMLFilter(Templates templates)} methods are supported.
+         */
+        const String FEATURE_XMLFILTER = "http://javax.xml.transform.sax.SAXTransformerFactory/feature/xmlfilter";
+
+        /**
+         * Get a TransformerHandler object that can process SAX
+         * ContentHandler events into a Result, based on the transformation
+         * instructions specified by the argument.
+         *
+         * @param src The Source of the transformation instructions.
+         *
+         * @return TransformerHandler ready to transform SAX events.
+         *
+         * @throws TransformerConfigurationException If for some reason the
+         * TransformerHandler can not be created.
+         */
+        NewTransformerHandler(
+            [in] ISource* src,
+            [out] ITransformerHandler** handler);
+
+        /**
+         * Get a TransformerHandler object that can process SAX
+         * ContentHandler events into a Result, based on the Templates argument.
+         *
+         * @param templates The compiled transformation instructions.
+         *
+         * @return TransformerHandler ready to transform SAX events.
+         *
+         * @throws TransformerConfigurationException If for some reason the
+         * TransformerHandler can not be created.
+         */
+        NewTransformerHandler(
+            [in] ITemplates* templates,
+            [out] ITransformerHandler** handler);
+
+        /**
+         * Get a TransformerHandler object that can process SAX
+         * ContentHandler events into a Result. The transformation
+         * is defined as an identity (or copy) transformation, for example
+         * to copy a series of SAX parse events into a DOM tree.
+         *
+         * @return A non-null reference to a TransformerHandler, that may
+         * be used as a ContentHandler for SAX parse events.
+         *
+         * @throws TransformerConfigurationException If for some reason the
+         * TransformerHandler cannot be created.
+         */
+        NewTransformerHandler(
+            [out] ITransformerHandler** handler);
+
+        /**
+         * Get a TemplatesHandler object that can process SAX
+         * ContentHandler events into a Templates object.
+         *
+         * @return A non-null reference to a TransformerHandler, that may
+         * be used as a ContentHandler for SAX parse events.
+         *
+         * @throws TransformerConfigurationException If for some reason the
+         * TemplatesHandler cannot be created.
+         */
+        NewTemplatesHandler(
+            [out] ITemplatesHandler** handler);
+
+        /**
+         * Create an XMLFilter that uses the given Source as the
+         * transformation instructions.
+         *
+         * @param src The Source of the transformation instructions.
+         *
+         * @return An XMLFilter object, or null if this feature is not supported.
+         *
+         * @throws TransformerConfigurationException If for some reason the
+         * TemplatesHandler cannot be created.
+         */
+        NewXMLFilter(
+            [in] ISource* src,
+            [out] IXMLFilter** handler);
+
+        /**
+         * Create an XMLFilter, based on the Templates argument..
+         *
+         * @param templates The compiled transformation instructions.
+         *
+         * @return An XMLFilter object, or null if this feature is not supported.
+         *
+         * @throws TransformerConfigurationException If for some reason the
+         * TemplatesHandler cannot be created.
+         */
+        NewXMLFilter(
+            [in] ITemplates* templates,
+            [out] IXMLFilter** handler);
+    }
+
+    } // namespace Sax
+    } // namespace Transform
+    } // namespace Xml
+    } // namespace Elastosx
+}

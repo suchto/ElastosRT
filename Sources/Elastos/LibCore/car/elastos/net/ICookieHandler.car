@@ -1,0 +1,78 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Net.IURI;
+    interface Elastos.Utility.IMap;
+
+    namespace Elastos {
+    namespace Net {
+
+    /**
+     * This class provides a way to manage cookies with a HTTP protocol handler.
+     */
+    interface ICookieHandler {
+        /**
+         * Gets all cookies for a specific URI from the cookie cache.
+         *
+         * @param uri
+         *            a URI to search for applicable cookies.
+         * @param requestHeaders
+         *            a list of request headers.
+         * @return an unchangeable map of all appropriate cookies.
+         * @throws IOException
+         *             if an error occurs during the I/O operation.
+         */
+        Get(
+            [in] IURI* uri,
+            [in] IMap* requestHeaders,
+            [out] IMap** cookiesMap);
+
+        /**
+         * Sets all cookies of a specific URI in the {@code responseHeaders} into
+         * the cookie cache.
+         *
+         * @param uri
+         *            the origin URI of the cookies.
+         * @param responseHeaders
+         *            a list of request headers.
+         * @throws IOException
+         *             if an error occurs during the I/O operation.
+         */
+        Put(
+            [in] IURI* uri,
+            [in] IMap* requestHeaders);
+    }
+
+    interface ICookieHandlerHelper {
+        /**
+         * Returns the system-wide cookie handler or {@code null} if not set.
+         */
+        GetDefault(
+            [out] ICookieHandler** handler);
+
+        /**
+         * Sets the system-wide cookie handler.
+         */
+        SetDefault(
+            [in] ICookieHandler* handler);
+    }
+
+    } // namespace Net
+    } // namespace Elastos
+
+}

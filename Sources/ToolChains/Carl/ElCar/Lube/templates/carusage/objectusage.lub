@@ -1,0 +1,61 @@
+$;;=========================================================================
+$;; Copyright (C) 2012 The Elastos Open Source Project
+$;;
+$;; Licensed under the Apache License, Version 2.0 (the "License");
+$;; you may not use this file except in compliance with the License.
+$;; You may obtain a copy of the License at
+$;;
+$;;      http://www.apache.org/licenses/LICENSE-2.0
+$;;
+$;; Unless required by applicable law or agreed to in writing, software
+$;; distributed under the License is distributed on an "AS IS" BASIS,
+$;; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+$;; See the License for the specific language governing permissions and
+$;; limitations under the License.
+$;;=========================================================================
+$
+$INPUT class
+$
+${class.name} {$^
+$   WITH all interfaces DO
+$       IF attrib is not "generic" and attrib is not "clsobj" and attrib is not "callback"
+$           IF interface is first
+ ${name}$^
+$           ELSE
+, ${name}$^
+$           END IF
+$       END IF
+$   END DO ;; all interfaces
+ }$^
+
+$IF attrib is not "private"
+$   IF attrib is not "hasctor"
+$       WITH all interfaces DO
+$          IF attrib is not "callback" and attrib is not "clsobj"
+$ ;; static ECode
+${class.name}::$^
+$              IF class.attrib is "singleton"
+AcquireSingleton(
+$              ELSE
+New(
+$              END IF ;; singleton
+        /*[out]*/ ${name} **p${name});
+$ ;; static ECode
+${class.name}::$^
+$              IF class.attrib is "singleton"
+AcquireSingletonInDomain(
+$              ELSE
+NewInRegime(
+$              END IF ;; singleton
+        /*[in]*/  PRegime pRegime,
+        /*[out]*/ ${name} **p${name});
+$           END IF
+$       END DO ;; all interfaces
+$    ELSE ;; hasctor
+${UsageNewOfCtor(class)}
+$    END IF ;; hasctor
+$END IF ;; private
+$IF attrib is "hascallback"
+$    TEMPLATE "callbackusage.lub"
+$END IF
+

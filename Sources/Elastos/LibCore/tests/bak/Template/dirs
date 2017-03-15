@@ -1,0 +1,8 @@
+
+DIRS = List
+DIRS += Map
+DIRS += Set
+DIRS += Vector
+DIRS += HashTable
+DIRS += HashMap
+DIRS += HashSet

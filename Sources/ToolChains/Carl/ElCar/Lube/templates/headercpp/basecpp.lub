@@ -1,0 +1,44 @@
+$;;=========================================================================
+$;; Copyright (C) 2012 The Elastos Open Source Project
+$;;
+$;; Licensed under the Apache License, Version 2.0 (the "License");
+$;; you may not use this file except in compliance with the License.
+$;; You may obtain a copy of the License at
+$;;
+$;;      http://www.apache.org/licenses/LICENSE-2.0
+$;;
+$;; Unless required by applicable law or agreed to in writing, software
+$;; distributed under the License is distributed on an "AS IS" BASIS,
+$;; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+$;; See the License for the specific language governing permissions and
+$;; limitations under the License.
+$;;=========================================================================
+$
+$INPUT module
+$OUTPUT "${name}.cpp"
+
+${GenerateDependHeaderForModule(module)}
+
+using namespace Elastos;
+
+$TEMPLATE "header/decluuid.lub"
+$
+$WITH all interfaces DO
+$  IF interface.attrib is not "sink"
+${InterfaceNamespaceBegin(interface)}$^
+$   WITH all interfaceconsts DO
+$     IF type is "Byte" or type is "Int16" or type is "Int32" or type is "Char32"
+const ${type} ${interface.name}::${name};
+$     ELSE
+$        IF type is "String"
+INIT_PROI_1 const ${type} ${interface.name}::${name} = ${value};
+$        ELSE
+const ${type} ${interface.name}::${name} = ${value};
+$        END IF
+$     END IF
+$   END DO ;; all interfaceconsts
+${InterfaceNamespaceEnd(interface)}$^
+$  END IF;; not sink
+$END DO ;; all interfaces
+$
+$END OUTPUT

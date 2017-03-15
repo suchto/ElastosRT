@@ -1,0 +1,83 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Utility.IMap;
+
+    namespace Elastos {
+    namespace Text {
+
+    [deprecated]
+    interface IAttributedString {
+        /**
+         * Applies a given attribute to this string.
+         */
+        AddAttribute(
+            [in] IAttributedCharacterIteratorAttribute* attribute,
+            [in] IInterface* value);
+
+        /**
+         * Applies a given attribute to the given range of this string.
+         */
+        AddAttribute(
+            [in] IAttributedCharacterIteratorAttribute* attribute,
+            [in] IInterface* value,
+            [in] Int32 start,
+            [in] Int32 end);
+
+        /**
+         * Applies a given set of attributes to the given range of the string.
+         */
+        AddAttributes(
+            [in] IMap * attributes,
+            [in] Int32 start,
+            [in] Int32 end);
+
+        /**
+         * Returns an {AttributedCharacterIterator} that gives access to the
+         * complete content of this attributed string.
+         */
+        GetIterator(
+            [out] IAttributedCharacterIterator** iterator);
+
+        /**
+         * Returns an {AttributedCharacterIterator} that gives access to the
+         * complete content of this attributed string. Only attributes contained in
+         * {attributes} are available from this iterator if they are defined
+         * for this text.
+         */
+        GetIterator(
+            [in] ArrayOf<IAttributedCharacterIteratorAttribute*>* attributes,
+            [out] IAttributedCharacterIterator** iterator);
+
+        /**
+         * Returns an {AttributedCharacterIterator} that gives access to the
+         * contents of this attributed string starting at index {start} up to
+         * index {end}. Only attributes contained in {attributes} are
+         * available from this iterator if they are defined for this text.
+         */
+
+        GetIterator(
+            [in] ArrayOf<IAttributedCharacterIteratorAttribute*>* attributes,
+            [in] Int32 start,
+            [in] Int32 end,
+            [out] IAttributedCharacterIterator** iterator);
+    }
+
+    } // namespace Text
+    } // namespace Elastos
+}

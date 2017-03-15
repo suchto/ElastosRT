@@ -1,0 +1,89 @@
+$;;=========================================================================
+$;; Copyright (C) 2012 The Elastos Open Source Project
+$;;
+$;; Licensed under the Apache License, Version 2.0 (the "License");
+$;; you may not use this file except in compliance with the License.
+$;; You may obtain a copy of the License at
+$;;
+$;;      http://www.apache.org/licenses/LICENSE-2.0
+$;;
+$;; Unless required by applicable law or agreed to in writing, software
+$;; distributed under the License is distributed on an "AS IS" BASIS,
+$;; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+$;; See the License for the specific language governing permissions and
+$;; limitations under the License.
+$;;=========================================================================
+$
+$INPUT module
+$OUTPUT "_CCallbackSink_.h"
+
+#ifndef _CCallbackSink_H_
+#define _CCallbackSink_H_
+
+#include <elastos.h>
+#include <callback.h>
+#include <elastos/core/Mutex.h>
+
+using namespace Elastos;
+using Elastos::Core::Mutex;
+
+class _CCallbackSink_
+{
+public:
+
+    CARAPI _AddCallback(Int32 event, EventHandler & handler);
+
+    CARAPI _RemoveCallback(Int32 event, EventHandler & handler);
+
+    CARAPI _AcquireCallbackRendezvous(
+            Int32 event,
+            ICallbackRendezvous** ppRendezvous);
+
+    CARAPI _RemoveAllCallbacks();
+
+    CARAPI _CancelPendingCallback(Int32 event);
+
+    CARAPI _CancelAllPendingCallbacks();
+
+    CARAPI _PostCallbackEvent(
+            PInterface _pServer_,
+            Int32 _EventId_,
+            CallbackContextContainer *_pEvent_,
+            Int32 _cFlags_,
+            PVoid pCoalesceFunc,
+            IParcel **_ppParams_);
+
+    _CCallbackSink_(
+            PInterface* ppServer,
+            ICallbackConnector** ppConnector,
+            Int32 nMaxEvents,
+            CallbackContextContainer* pEvent) :
+                    _m_ppServer(ppServer), _m_ppConnector(ppConnector),
+                    _m_nMaxEvents(nMaxEvents), _m_events(pEvent)
+    {
+    }
+
+private:
+
+    ECode _AddCallback(
+                PInterface pCallbackContext,
+                Int32 dwEvent,
+                EventHandler & handler);
+    ECode _RemoveCallback(
+                PInterface pCallbackContext,
+                Int32 dwEvent,
+                EventHandler & handler);
+
+protected:
+
+    Mutex                       _m_lock;
+    PInterface*                 _m_ppServer;
+    ICallbackConnector**        _m_ppConnector;
+    Int32                       _m_nMaxEvents;
+    CallbackContextContainer*   _m_events;
+    ICallbackSink*              _m_pSink;
+};
+
+#endif // _CCallbackSink_H_
+$END OUTPUT
+

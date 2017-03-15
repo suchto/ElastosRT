@@ -1,0 +1,125 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Org {
+    namespace Apache {
+    namespace Harmony {
+    namespace Security {
+    namespace X509 {
+    namespace Tsp {
+
+    /**
+       Corresponds to PKIFailureInfo structure.
+       See RFC 3161 -
+       Internet X.509 Public Key Infrastructure
+       Time-Stamp Protocol (TSP)
+       http://www.ietf.org/rfc/rfc3161.txt)
+
+       PKIFailureInfo ::= BIT STRING {
+       badAlg               (0),
+         -- unrecognized or unsupported Algorithm Identifier
+       badRequest           (2),
+         -- transaction not permitted or supported
+       badDataFormat        (5),
+         -- the data submitted has the wrong format
+       timeNotAvailable    (14),
+         -- the TSA's time source is not available
+       unacceptedPolicy    (15),
+         -- the requested TSA policy is not supported by the TSA
+       unacceptedExtension (16),
+         -- the requested extension is not supported by the TSA
+        addInfoNotAvailable (17)
+          -- the additional information requested could not be understood
+          -- or is not available
+        systemFailure       (25)
+          -- the request cannot be handled due to system failure  }
+
+        The value of PKIFailureInfo can take only one of the values,
+        so it is represented by an integer here.
+     */
+    interface IPKIFailureInfo {
+        /**
+         *  Unrecognized algorithm ID
+         */
+        const Int32 PKIFailureInfo_BAD_ALG = 0;
+
+        /**
+         *  Transaction is not supported
+         */
+        const Int32 PKIFailureInfo_BAD_REQUEST = 2;
+
+        /**
+         *  Data format is wrong
+         */
+        const Int32 PKIFailureInfo_BAD_DATA_FORMAT = 5;
+
+        /**
+         *  TSA cannot use the time source
+         */
+        const Int32 PKIFailureInfo_TIME_NOT_AVAILABLE = 14;
+
+        /**
+         *  The policy is not supported
+         */
+        const Int32 PKIFailureInfo_UNACCEPTED_POLICY = 15;
+
+        /**
+         *  The extension is not supported
+         */
+        const Int32 PKIFailureInfo_UNACCEPTED_EXTENSION = 16;
+
+        /**
+         *  The requested additional info is not available
+         */
+        const Int32 PKIFailureInfo_ADD_INFO_NOT_AVAILABLE = 17;
+
+        /**
+         *  System failure has occured
+         */
+        const Int32 PKIFailureInfo_SYSTEM_FAILURE = 25;
+
+        /**
+         * @return int value of the failure
+         */
+        GetValue(
+            [out] Int32* value);
+    }
+
+    interface IPKIFailureInfoHelper {
+        /**
+         * @return maximum of values in the enum
+         */
+        GetMaxValue(
+            [out] Int32* value);
+
+        /**
+         * @param value
+         * @return
+         */
+        GetInstance(
+            [in] Int32 value,
+            [out] IPKIFailureInfo** instance);
+    }
+
+    } // namespace Tsp
+    } // namespace X509
+    } // namespace Security
+    } // namespace Harmony
+    } // namespace Apache
+    } // namespace Org
+}

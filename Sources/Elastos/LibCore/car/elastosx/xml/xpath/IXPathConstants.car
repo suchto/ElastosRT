@@ -1,0 +1,78 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastosx.Xml.Namespace.IQName;
+
+    namespace Elastosx {
+    namespace Xml {
+    namespace XPath {
+
+    interface IXPathConstants {
+
+    /**
+     * <p>The URI for the DOM object model, "http://java.sun.com/jaxp/xpath/dom".</p>
+     */
+        const String DOM_OBJECT_MODEL = "http://java.sun.com/jaxp/xpath/dom";
+
+    /**
+     * <p>The XPath 1.0 number data type.</p>
+     *
+     * <p>Maps to Java {@link Double}.</p>
+     */
+            GetQNameNUMBER(
+                [out] IQName** qName);
+
+    /**
+     * <p>The XPath 1.0 string data type.</p>
+     *
+     * <p>Maps to Java {@link String}.</p>
+     */
+            GetQNameSTRING(
+                [out] IQName** qName);
+
+    /**
+     * <p>The XPath 1.0 boolean data type.</p>
+     *
+     * <p>Maps to Java {@link Boolean}.</p>
+     */
+            GetQNameBOOLEAN(
+                [out] IQName** qName);
+
+    /**
+     * <p>The XPath 1.0 NodeSet data type.</p>
+     *
+     * <p>Maps to Java {@link org.w3c.dom.NodeList}.</p>
+     */
+            GetQNameNODESET(
+                [out] IQName** qName);
+
+    /**
+     * <p>The XPath 1.0 NodeSet data type.
+     *
+     * <p>Maps to Java {@link org.w3c.dom.Node}.</p>
+     */
+            GetQNameNODE(
+                [out] IQName** qName);
+
+    }
+
+    } // namespace XPath
+    } // namespace Xml
+    } // namespace Elastosx
+}
+

@@ -1,0 +1,96 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+
+    interface Elastos.Text.ICharacterIterator;
+    interface Elastos.Utility.ILocale;
+
+    namespace Libcore {
+    namespace ICU {
+
+    /**
+     * @Involve
+     * interface ICloneable;
+     */
+    interface INativeBreakIterator {
+        GetCurrent(
+            [out] Int32 * value);
+
+        GetFirst(
+            [out] Int32 * value);
+
+        GetFollowing(
+            [in] Int32 offset,
+            [out] Int32 * value);
+
+        GetText(
+            [out] ICharacterIterator ** outiter);
+
+        GetLast(
+            [out] Int32 * value);
+
+        GetNext(
+            [in] Int32 n,
+            [out] Int32 * value);
+
+        GetNext(
+            [out] Int32 * value);
+
+        GetPrevious(
+            [out] Int32 * value);
+
+        SetText(
+            [in] ICharacterIterator * newText);
+
+        SetText(
+            [in] String newText);
+
+        HasText(
+            [out] Boolean* hasText);
+
+        IsBoundary(
+            [in] Int32 offset,
+            [out] Boolean * value);
+
+        GetPreceding(
+            [in] Int32 offset,
+            [out] Int32 * value);
+    }
+
+    interface INativeBreakIteratorHelper {
+
+        GetCharacterInstance(
+            [in] ILocale * where,
+            [out] INativeBreakIterator ** outiter);
+
+        GetLineInstance(
+            [in] ILocale * where,
+            [out] INativeBreakIterator ** outiter);
+
+        GetSentenceInstance(
+            [in] ILocale * where,
+            [out] INativeBreakIterator ** outiter);
+
+        GetWordInstance(
+            [in] ILocale * where,
+            [out] INativeBreakIterator ** outiter);
+    }
+
+    } // namespace ICU
+    } // namespace Libcore
+}

@@ -1,0 +1,66 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Math.IBigInteger;
+
+    namespace Elastos {
+    namespace Security {
+    namespace Spec {
+
+    /**
+     * The parameters specifying a <i>prime finite field</i> of an
+     * elliptic curve.
+     */
+    /**
+     * @Involve
+     * interface IECField
+     */
+    interface IECFieldFp {
+        /**
+         * Returns the prime value {@code p} for this finite field.
+         *
+         * @return the prime value {@code p} for this finite field.
+         */
+        GetP(
+            [out] IBigInteger** p);
+
+        /**
+         * Returns whether the specified object is equal to this finite field.
+         *
+         * @param obj
+         *            the object to compare to this finite field.
+         * @return {@code true} if the specified object is equal to this finite field,
+         *         otherwise {@code false}.
+         */
+        Equals(
+            [in] IInterface* obj,
+            [out] Boolean* result);
+
+        /**
+         * Returns the hashcode value for this finite field.
+         *
+         * @return the hashcode value for this finite field.
+         */
+        GetHashCode(
+            [out] Int32* hashCode);
+    }
+
+    } // namespace Spec
+    } // namespace Security
+    } // namespace Elastos
+}

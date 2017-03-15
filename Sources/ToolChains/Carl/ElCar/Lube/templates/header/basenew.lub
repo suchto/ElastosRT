@@ -1,0 +1,71 @@
+$;;=========================================================================
+$;; Copyright (C) 2012 The Elastos Open Source Project
+$;;
+$;; Licensed under the Apache License, Version 2.0 (the "License");
+$;; you may not use this file except in compliance with the License.
+$;; You may obtain a copy of the License at
+$;;
+$;;      http://www.apache.org/licenses/LICENSE-2.0
+$;;
+$;; Unless required by applicable law or agreed to in writing, software
+$;; distributed under the License is distributed on an "AS IS" BASIS,
+$;; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+$;; See the License for the specific language governing permissions and
+$;; limitations under the License.
+$;;=========================================================================
+$
+$ INPUT class
+$ IF type is not "aspect"
+$   IF attrib is "hasctor"
+$     WITH all interfaces DO
+$       IF attrib is "clsobj"
+$         WITH all methods DO
+$           IF attrib is not "defaultctor"
+
+$             IF class.attrib is "singleton"
+    static _ELASTOS ECode _AcquireSingletonInRegime(
+$             ELSE
+    static _ELASTOS ECode _NewInRegime(
+$             END IF ;; is singleton
+        /* [in] */ IRegime* __regime$^
+$             WITH all parameters DO
+,
+$               IF parameter is not last
+        /* [${attrib}] */ ${ParamNamespaceType(type)} ${name}$^
+$               ELSE
+        /* [out] */ IInterface** __object)
+$               END IF ;; parameter is not last
+$             END DO ;; all parameters
+    {
+        _ELASTOS ECode ec;
+        I${class.name}ClassObject* pClassObject;
+        PInterface pObject = NULL;
+
+        ec = _CObject_AcquireClassFactory(ECLSID_${class.name}, RGM_SAME_DOMAIN,
+                EIID_I${class.name}ClassObject, (IInterface**)&pClassObject);
+        if (FAILED(ec)) return ec;
+
+        ec = pClassObject->${method.name}($^
+$           WITH all parameters DO
+$             IF parameter is not last
+${name}, $^
+$             ELSE
+&pObject);
+$             END IF ;; parameter is not last
+$           END DO ;; all parameters
+
+        if (!IS_RGM_NUMBER(__regime) && NULL != pObject)
+            ec = _CObject_EnterRegime(pObject, __regime);
+
+        *__object = pObject;
+
+        pClassObject->Release();
+
+        return ec;
+    }
+$           END IF ;; is not defaultctor
+$         END DO ;; all methods
+$       END IF ;; is clsobj
+$     END DO ;; all interfaces
+$   END IF ;; attrib is hasctor
+$ END IF ;; is not aspect

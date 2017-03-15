@@ -1,0 +1,65 @@
+#=========================================================================
+# Copyright (C) 2012 The Elastos Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#=========================================================================
+
+TARGET_NAME = test_libcore_io
+TARGET_TYPE = ecx
+
+CAR_FLAGS += -n -u
+LUBE_FLAGS += -n -u
+
+IMPORTS = Elastos.CoreLibrary.eco
+
+LIBRARIES = $(XDK_USER_LIB)/Elastos.Runtime.lib
+LIBRARIES += $(XDK_TARGETS)/Elastos.Runtime.eco
+LIBRARIES += $(XDK_TARGETS)/Elastos.CoreLibrary.eco
+LIBRARIES += -lm -lcutils
+
+SOURCES = Elastos.CoreLibrary.cpp
+SOURCES += Base64Test.cpp
+SOURCES += CharArrayWriterTest.cpp
+SOURCES += DataOutputStreamTest.cpp
+SOURCES += FileDescriptorTest.cpp
+SOURCES += FileInputStreamTest.cpp
+SOURCES += FileOutputStreamTest.cpp
+SOURCES += FileTest.cpp
+SOURCES += FilterInputStreamNullSourceTest.cpp
+SOURCES += InputStreamReaderTest.cpp
+SOURCES += InterruptedStreamTest.cpp
+SOURCES += ObjectOutputStreamTest.cpp
+SOURCES += OldAndroidBufferedInputStreamTest.cpp
+SOURCES += OldAndroidBufferedOutputStreamTest.cpp
+SOURCES += OldAndroidBufferedReaderTest.cpp
+SOURCES += OldAndroidBufferedWriterTest.cpp
+SOURCES += OldAndroidByteArrayInputStreamTest.cpp
+SOURCES += OldAndroidByteArrayOutputStreamTest.cpp
+SOURCES += OldAndroidCharArrayReaderTest.cpp
+SOURCES += OldAndroidDataInputStreamTest.cpp
+
+SOURCES += MyThread.car
+
+INCLUDES += $(PREBUILD_INC)/sys;
+INCLUDES += $(PREBUILD_INC)/fdlibm;
+INCLUDES += ../../corelibrary
+INCLUDES += $(MAKEDIR)/../../../inc/elastos;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/core;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/io;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/io/channels/spi;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/utility;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/utility/regex;
+INCLUDES += $(MAKEDIR)/../../../inc/elastos/droid/system;
+INCLUDES += $(MAKEDIR)/../../../inc/libcore/icu;
+INCLUDES += $(MAKEDIR)/../../../inc/libcore/utility;
+

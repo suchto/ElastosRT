@@ -1,0 +1,65 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+
+    namespace Elastos {
+    namespace IO {
+    /**
+     * Wraps an existing {@link InputStream} and counts the line terminators
+     * encountered while reading the data. Line numbering starts at 0. Recognized
+     * line terminator sequences are {@code '\r'}, {@code '\n'} and {@code "\r\n"}.
+     * When using {@code read}, line terminator sequences are always translated into
+     * {@code '\n'}.
+     *
+     * @deprecated Use {@link LineNumberReader} instead.
+     *
+     * @implement Elastos.IO.IFilterInputStream
+     */
+     // @Deprecated
+     /**
+     * @Involve
+     * interface Elastos.IO.ICloseable;
+     * interface IInputStream;
+     * interface IFilterInputStream;
+     */
+    interface ILineNumberInputStream {
+        /**
+         * Returns the current line number for this stream. Numbering starts at 0.
+         *
+         * @return the current line number.
+         */
+        GetLineNumber(
+            [out] Int32* lineNumber);
+
+        /**
+         * Sets the line number of this stream to the specified
+         * {lineNumber}. Note that this may have side effects on the
+         * line number associated with the last marked position.
+         *
+         * @param lineNumber
+         *            the new lineNumber value.
+         * @see #mark(int)
+         * @see #reset()
+         */
+        SetLineNumber(
+            [in] Int32 lineNumber);
+    }
+
+    } // namespace IO
+    } // namespace Elastos
+}

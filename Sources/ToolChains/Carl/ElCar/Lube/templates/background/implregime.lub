@@ -1,0 +1,106 @@
+$;;=========================================================================
+$;; Copyright (C) 2012 The Elastos Open Source Project
+$;;
+$;; Licensed under the Apache License, Version 2.0 (the "License");
+$;; you may not use this file except in compliance with the License.
+$;; You may obtain a copy of the License at
+$;;
+$;;      http://www.apache.org/licenses/LICENSE-2.0
+$;;
+$;; Unless required by applicable law or agreed to in writing, software
+$;; distributed under the License is distributed on an "AS IS" BASIS,
+$;; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+$;; See the License for the specific language governing permissions and
+$;; limitations under the License.
+$;;=========================================================================
+$
+$INPUT class
+
+ECode _${name}::ObjectEnter(
+    /* [in] */ PInterface pObject)
+{
+    ECode ec;
+    
+    if (pObject == NULL) return E_INVALID_ARGUMENT;
+
+    ec = this->OnObjectEntering(pObject);
+    if (FAILED(ec)) return ec;
+$IF attrib is "aspect"
+
+$  WITH all aspects DO
+    ec = _CObject_AttachAspect(pObject, ECLSID_${name});
+    if (FAILED(ec)) {
+        goto ErrorExit;
+    }
+$  END DO ;; all aspects
+$END IF ;; attrib is "aspect"
+
+$IF lubeoption is not "inkernel"
+    _Impl_EnterProtectedZone();
+$END IF;; not InKernel
+    ec = this->OnObjectEntered(pObject);
+    IObject *pObj;
+    pObj = (IObject*)pObject->Probe(EIID_IObject);
+    assert(NULL != pObj);
+    pObj->Aggregate(AggrType_EnteredRegime, (PInterface)(PRegime)this);
+$IF lubeoption is not "inkernel"
+    _Impl_LeaveProtectedZone();
+$END IF;; not InKernel
+    if (FAILED(ec)) goto ErrorExit;
+    return NOERROR;
+
+ErrorExit:
+    return ec;
+}
+
+ECode _${name}::ObjectLeave(
+    /* [in] */ PInterface pObject)
+{
+    ECode ec;
+    
+    if (pObject == NULL) return E_INVALID_ARGUMENT;
+
+$IF lubeoption is not "inkernel"
+    _Impl_EnterProtectedZone();
+$END IF;; not inkernel
+    ec = this->OnObjectLeaving(pObject);
+$IF lubeoption is not "inkernel"
+    _Impl_LeaveProtectedZone();
+$END IF;; not inkernel
+    if (FAILED(ec)) return ec;
+$IF attrib is "aspect"
+
+$  WITH first aspect DO
+    ec = _CObject_DetachAspect(pObject, ECLSID_${name});
+    if (FAILED(ec)) return ec;
+$  END DO
+$END IF
+    IObject *pObj;
+    pObj = (IObject*)pObject->Probe(EIID_IObject);
+    assert(NULL != pObj);
+    pObj->Aggregate(AggrType_LeftRegime, (PInterface)(PRegime)this);
+    this->OnObjectLeft(pObject);
+    return NOERROR;
+}
+
+ECode _${name}::CreateObject(
+    /* [in] */ const ClassID & clsid,
+    /* [in] */ const InterfaceID & iid,
+    /* [out] */ PInterface * ppObject)
+{
+    PInterface pObject = NULL;
+
+    if (ppObject == NULL) return E_INVALID_ARGUMENT;
+
+    ECode ec = _CObject_CreateInstance(clsid, RGM_SAME_DOMAIN, iid, &pObject );
+    if (FAILED(ec)) return ec;
+
+    IObject *pObj = (IObject*)pObject->Probe(EIID_IObject);
+    if (NULL != pObj) {
+        ec = _CObject_EnterRegime(pObject, (IRegime*)this);
+        if (FAILED(ec)) pObject->Release();
+    }
+    *ppObject = pObject;
+
+    return ec;
+}

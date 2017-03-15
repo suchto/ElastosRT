@@ -1,0 +1,88 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Security.IPublicKey;
+    interface Elastos.Security.Cert.IX509Certificate;
+    interface Elastosx.Security.Auth.X500.IX500Principal;
+
+    namespace Elastos {
+    namespace Security {
+    namespace Cert {
+
+    interface ITrustAnchor {
+        /**
+         * Returns a copy of the name constraints in ASN.1 DER encoded form.
+         *
+         * @return a copy of the name constraints in ASN.1 DER encoded form.
+         */
+        GetNameConstraints(
+            [out, callee] ArrayOf<Byte>* nameConstraints);
+
+        /**
+         * Returns the certificate of this <i>trusted</i> certificate authority.
+         *
+         * @return the certificate of this CA or {@code null}, if the trust anchor
+         *         of this instance was not created with a certificate.
+         */
+        GetTrustedCert(
+            [out] IX509Certificate** cert);
+
+        /**
+         * Returns the name of the certificate authority as {@code X500Principal}.
+         *
+         * @return the name of the certificate authority or {@code null} if the
+         *         trust anchor of this instance was not created with a {@code
+         *         X500Principal}.
+         */
+        GetCA(
+            [out] IX500Principal** ca);
+
+        /**
+         * Returns the name of the certificate authority as {@code String} in RFC
+         * 2253 format.
+         *
+         * @return the name of the certificate authority as {@code String} in RFC
+         *         2253 format or {@code null} if the trust anchor of this instance
+         *         was not created with a CA name.
+         */
+        GetCAName(
+            [out] String* caName);
+
+        /**
+         * Returns the public key of the certificate authority.
+         *
+         * @return the public key of the certificate authority or {@code null} if
+         *         the trust anchor if this instance was not created with a public
+         *         key.
+         */
+        GetCAPublicKey(
+            [out] IPublicKey** key);
+
+        /**
+         * Returns a string representation of this {@code TrustAnchor} instance.
+         *
+         * @return a string representation of this {@code TrustAnchor} instance.
+         */
+        ToString(
+            [out] String* str);
+    }
+
+    } // namespace Cert
+    } // namespace Security
+    } // namespace Elastos
+}

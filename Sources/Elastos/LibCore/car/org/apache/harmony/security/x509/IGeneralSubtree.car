@@ -1,0 +1,84 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    using interface Elastos.Core.IStringBuilder;
+    interface Org.Apache.Harmony.Security.Asn1.IASN1Sequence;
+
+    namespace Org {
+    namespace Apache {
+    namespace Harmony {
+    namespace Security {
+    namespace X509 {
+
+    /**
+     * The class encapsulates the ASN.1 DER encoding/decoding work
+     * with the GeneralSubtree structure which is a part of X.509 certificate:
+     * (as specified in RFC 3280 -
+     *  Internet X.509 Public Key Infrastructure.
+     *  Certificate and Certificate Revocation List (CRL) Profile.
+     *  http://www.ietf.org/rfc/rfc3280.txt):
+     *
+     * <pre>
+     *
+     *   GeneralSubtree ::= SEQUENCE {
+     *        base                    GeneralName,
+     *        minimum         [0]     BaseDistance DEFAULT 0,
+     *        maximum         [1]     BaseDistance OPTIONAL }
+     *
+     *   BaseDistance ::= INTEGER (0..MAX)
+     *
+     * </pre>
+     *
+     * @see org.apache.harmony.security.x509.NameConstraints
+     * @see org.apache.harmony.security.x509.GeneralName
+     */
+    interface IGeneralSubtree {
+        /**
+         * Returns the value of base field of the structure.
+         */
+        GetBase(
+            [out] IGeneralName** base);
+
+        /**
+         * Returns ASN.1 encoded form of this X.509 GeneralSubtree value.
+         */
+        GetEncoded(
+            [out, callee] ArrayOf<Byte>* encoded);
+
+        DumpValue(
+            [in] IStringBuilder* sb,
+            [in] String prefix);
+    }
+
+    interface IGeneralSubtreeHelper {
+        /**
+         * ASN.1 DER X.509 GeneralSubtree encoder/decoder class.
+         */
+        GetASN1(
+            [out] IASN1Sequence** asn1);
+
+        SetASN1(
+            [in] IASN1Sequence* asn1);
+    }
+
+    } // namespace X509
+    } // namespace Security
+    } // namespace Harmony
+    } // namespace Apache
+    } // namespace Org
+}

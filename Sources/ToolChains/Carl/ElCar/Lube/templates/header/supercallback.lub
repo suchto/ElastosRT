@@ -1,0 +1,172 @@
+$;;=========================================================================
+$;; Copyright (C) 2012 The Elastos Open Source Project
+$;;
+$;; Licensed under the Apache License, Version 2.0 (the "License");
+$;; you may not use this file except in compliance with the License.
+$;; You may obtain a copy of the License at
+$;;
+$;;      http://www.apache.org/licenses/LICENSE-2.0
+$;;
+$;; Unless required by applicable law or agreed to in writing, software
+$;; distributed under the License is distributed on an "AS IS" BASIS,
+$;; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+$;; See the License for the specific language governing permissions and
+$;; limitations under the License.
+$;;=========================================================================
+$
+$INPUT class
+$
+$   WITH all interfaces DO
+$       IF attrib is "callback" and attrib is not "clsobj"
+$           WITH all parents_and_me DO
+    // callback interface ${name}
+$           	WITH all methods DO
+
+    static _ELASTOS ECode $^
+$                 IF interface.attrib is "delegate"
+Assign${name}Delegate(
+$                 ELSE
+Add${name}Callback(
+$                 END IF;;
+            PInterface pServerObj,
+            _ELASTOS ECode (*pFunc)(
+                    void*, 
+                    PInterface$^
+$                   WITH all parameters DO
+, 
+                    ${ParamNamespaceType(type)}$^
+$                   END DO
+),
+            void* pUserData=NULL)
+    {
+        _ELASTOS ECode ec;
+        
+        if (NULL == pServerObj) return E_INVALID_ARGUMENT;
+        
+        ec = _Impl_CheckClsId(pServerObj, &ECLSID_${class.name}, &pServerObj);
+        if (FAILED(ec)) return ec;
+        
+        ec = _CObject_AddCallback(pServerObj, ${class.name}_${name}, 
+                Elastos::EventHandler::Make((void*)pUserData, *(void**)&pFunc));
+
+        return ec;
+    }
+
+    static _ELASTOS ECode $^
+$                 IF interface.attrib is "delegate"
+Revoke${name}Delegate(
+$                 ELSE
+Remove${name}Callback(
+$                 END IF;;
+            PInterface pServerObj,
+            _ELASTOS ECode (*pFunc)(
+                    void*, 
+                    PInterface$^
+$                   WITH all parameters DO
+,
+                    ${ParamNamespaceType(type)}$^
+$                   END DO
+),
+            void* pUserData=NULL)
+    {
+        _ELASTOS ECode ec;
+        
+        if (NULL == pServerObj) return E_INVALID_ARGUMENT;
+        
+        ec = _Impl_CheckClsId(pServerObj, &ECLSID_${class.name}, &pServerObj);
+        if (FAILED(ec)) return ec;
+
+        ec = _CObject_RemoveCallback(pServerObj, ${class.name}_${name},
+                Elastos::EventHandler::Make((void*)pUserData, *(void**)&pFunc));
+        
+        return ec;
+    }
+
+$                 IF interface.attrib is not "delegate"
+    static _ELASTOS ECode Acquire${name}Rendezvous(
+            PInterface pServerObj,
+            ICallbackRendezvous** ppRendezvous)
+    {
+        _ELASTOS ECode ec;
+        
+        if (NULL == pServerObj) return E_INVALID_ARGUMENT;
+        
+        ec = _Impl_CheckClsId(pServerObj, &ECLSID_${class.name}, &pServerObj);
+        if (FAILED(ec)) return ec;
+
+        ec = _CObject_AcquireCallbackRendezvous(pServerObj, ${class.name}_${name}, ppRendezvous);
+        
+        return ec;
+    }
+$                 END IF;; not delegate
+
+    template <class T>
+    static _ELASTOS ECode $^
+$                 IF interface.attrib is "delegate"
+Assign${name}Delegate(
+$                 ELSE
+Add${name}Callback(
+$                 END IF;;
+            PInterface pServerObj,
+            T *pThis,
+            _ELASTOS ECode (CARAPICALLTYPE T::*pFunc)(
+                    PInterface$^
+$                   WITH all parameters DO
+, 
+                    ${ParamNamespaceType(type)}$^
+$                   END DO
+))
+    {
+        _ELASTOS ECode ec;
+        
+        if (NULL == pServerObj) return E_INVALID_ARGUMENT;
+        
+        ec = _Impl_CheckClsId(pServerObj, &ECLSID_${class.name}, &pServerObj);
+        if (FAILED(ec)) return ec;
+
+        if (Conversion<T, CCarObject>::exists) {
+            ec  = _CObject_AddCallback(pServerObj, ${class.name}_${name}, 
+                    Elastos::EventHandler::Make(pThis,*(void**)&pFunc, CallbackType_CAR));
+        }
+        else {
+            ec = _CObject_AddCallback(pServerObj, ${class.name}_${name}, 
+                    Elastos::EventHandler::Make(pThis,*(void**)&pFunc, CallbackType_CPP));
+        }
+        
+        return ec;
+    }
+
+    template <class T>
+    static _ELASTOS ECode $^
+$                 IF interface.attrib is "delegate"
+Revoke${name}Delegate(
+$                 ELSE
+Remove${name}Callback(
+$                 END IF;;
+            PInterface pServerObj,
+            T *pThis,
+            _ELASTOS ECode (CARAPICALLTYPE T::*pFunc)(
+                    PInterface$^
+$                   WITH all parameters DO
+, 
+                    ${ParamNamespaceType(type)}$^
+$                   END DO
+))
+    {
+        _ELASTOS ECode ec;
+        
+        if (NULL == pServerObj) return E_INVALID_ARGUMENT;
+        
+        ec = _Impl_CheckClsId(pServerObj, &ECLSID_${class.name}, &pServerObj);
+        if (FAILED(ec)) return ec;
+
+        ec = _CObject_RemoveCallback(pServerObj, ${class.name}_${name}, 
+                Elastos::EventHandler::Make(pThis,*(void**)&pFunc));
+        
+        return ec;
+    }
+$
+$           	END DO ;; all methods
+$           END DO ;; all parents_and_me
+$       END IF ;; callback clsobj
+$   END DO ;; all interfaces

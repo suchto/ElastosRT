@@ -1,0 +1,65 @@
+#=========================================================================
+# Copyright (C) 2012 The Elastos Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#=========================================================================
+
+TARGET_NAME= ssl
+TARGET_TYPE= lib
+
+C_DEFINES += -DELASTOS_CORELIBRARY
+
+include $(MAKEDIR)/../../../sources.inc
+
+INCLUDES += ../../../corelibrary
+INCLUDES += $(MAKEDIR)/../../../../inc;
+INCLUDES += $(MAKEDIR)/../../../../inc/elastosx/net
+INCLUDES += $(MAKEDIR)/../../../../inc/elastosx/net/ssl
+INCLUDES += $(MAKEDIR)/../../../../inc/elastos/utility
+INCLUDES += $(MAKEDIR)/../../../../inc/elastos
+INCLUDES += $(MAKEDIR)/../../../../inc/elastos/net
+INCLUDES += $(MAKEDIR)/../../../../inc/elastos/security
+INCLUDES += $(MAKEDIR)/../../../../inc/libcore/utility
+INCLUDES += $(MAKEDIR)/../../../../inc/src/elastos
+INCLUDES += $(MAKEDIR)/../../../../../LibCore/inc/elastos/core/
+INCLUDES += $(MAKEDIR)/../../../../inc/org/apache/harmony/security/fortress
+
+SOURCES =  CDefaultHostnameVerifier.cpp
+SOURCES += CDistinguishedNameParser.cpp
+SOURCES += CKeyManagerFactoryHelper.cpp
+SOURCES += CSSLContextHelper.cpp
+SOURCES += CSSLParameters.cpp
+SOURCES += CSSLPermission.cpp
+SOURCES += CSSLServerSocketFactoryHelper.cpp
+SOURCES += CSSLSocketFactoryHelper.cpp
+SOURCES += CTrustManagerFactoryHelper.cpp
+SOURCES += CertPathTrustManagerParameters.cpp
+SOURCES += DefaultSSLServerSocketFactory.cpp
+SOURCES += DefaultSSLSocketFactory.cpp
+SOURCES += HandshakeCompletedEvent.cpp
+SOURCES += HttpsURLConnection.cpp
+SOURCES += CHttpsURLConnectionHelper.cpp
+SOURCES += KeyManagerFactory.cpp
+SOURCES += KeyStoreBuilderParameters.cpp
+SOURCES += SSLContext.cpp
+SOURCES += SSLContextSpi.cpp
+SOURCES += SSLEngine.cpp
+SOURCES += SSLEngineResult.cpp
+SOURCES += SSLServerSocket.cpp
+SOURCES += SSLServerSocketFactory.cpp
+SOURCES += SSLSessionBindingEvent.cpp
+SOURCES += SSLSocket.cpp
+SOURCES += SSLSocketFactory.cpp
+SOURCES += TrustManagerFactory.cpp
+SOURCES += X509ExtendedKeyManager.cpp
+SOURCES += ssl.cpp

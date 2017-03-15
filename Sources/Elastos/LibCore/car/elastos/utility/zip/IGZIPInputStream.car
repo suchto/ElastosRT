@@ -1,0 +1,66 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Elastos {
+    namespace Utility {
+    namespace Zip {
+
+    /**
+     *The GZIPInputStream class is used to read data stored in the GZIP format,
+     * reading and decompressing GZIP data from the underlying stream into its buffer.
+     * <p>
+     * <strong>Example</strong>
+     * <p>
+     * Using GZIPInputStream is easier than ZipInputStream because GZIP is only for
+     * compression, and is not a container for multiple files. This code decompresses
+     * the data from a GZIP stream, similar to the gunzip(1) utility.
+     *
+     * @sa ZipInputStream
+     *
+     * <pre>
+     * InputStream is = ...
+     * GZIPInputStream zis = new GZIPInputStream(new BufferedInputStream(is));
+     * try {
+     * // Reading from 'zis' gets you the uncompressed bytes...
+     *  processStream(zis);
+     * } finally {
+     * zis.close();
+     * }
+     * </pre>
+     *
+     * @implements Elastos.Utility.Zip.IDeflaterInputStream
+     */
+
+    /**
+     * @Involve
+     * interface ICloseable;
+     * interface IInputStream;
+     * interface IFilterInputStream;
+     * interface IInflaterInputStream;
+     */
+    interface IGZIPInputStream {
+        /**
+         * The magic header for the GZIP format.
+         */
+        const Int32 GZIP_MAGIC = 0x8b1f;
+    }
+
+    } // namespace Zip
+    } // namesapce Utility
+    } // namespace Elastos
+}

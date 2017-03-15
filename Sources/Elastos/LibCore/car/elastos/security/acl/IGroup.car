@@ -1,0 +1,81 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Security.IPrincipal;
+    interface Elastos.Utility.IEnumeration;
+
+    namespace Elastos {
+    namespace Security {
+    namespace Acl {
+
+    /**
+     * A {@code Principal} that represents a group of principals.
+     *
+     * @see Principal
+     */
+    /**
+     * @Involve
+     * interface Elastos.Security.IPrincipal
+     */
+    interface IGroup {
+        /**
+         * Adds a member to this group.
+         *
+         * @param user
+         *            the member to add.
+         * @return {@code true} if the member was added, {@code false} if it was already a member.
+         */
+        AddMember(
+            [in] IPrincipal* user,
+            [out] Boolean* result);
+
+        /**
+         * Removes a member from this group.
+         *
+         * @param user
+         *            the member to remove.
+         * @return {@code true} if the member was removed, {@code false} if it was not a member.
+         */
+        RemoveMember(
+            [in] IPrincipal* user,
+            [out] Boolean* result);
+
+        /**
+         * Returns whether the specified principal is a member of this group.
+         *
+         * @param member
+         *            the principal to check.
+         * @return {@code true} if the principal is a member, otherwise {@code false}.
+         */
+        IsMember(
+            [in] IPrincipal* member,
+            [out] Boolean* result);
+
+        /**
+         * Returns the members of this group.
+         *
+         * @return the members of this group.
+         */
+        GetMembers(
+            [out] IEnumeration** members);
+    }
+
+    } // namespace Acl
+    } // namespace Security
+    } // namespace Elastos
+}

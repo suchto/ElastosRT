@@ -1,0 +1,98 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Org {
+    namespace Apache {
+    namespace Harmony {
+    namespace Security {
+    namespace X509 {
+    namespace Tsp {
+
+    /**
+     Corresponds to PKIStatus structure.
+     See RFC 3161 -
+     Internet X.509 Public Key Infrastructure
+     Time-Stamp Protocol (TSP)
+     http://www.ietf.org/rfc/rfc3161.txt)
+
+     PKIStatus ::= INTEGER {
+        granted                (0),
+        -- when the PKIStatus contains the value zero a TimeStampToken, as
+           requested, is present.
+        grantedWithMods        (1),
+         -- when the PKIStatus contains the value one a TimeStampToken,
+           with modifications, is present.
+        rejection              (2),
+        waiting                (3),
+        revocationWarning      (4),
+         -- this message contains a warning that a revocation is
+         -- imminent
+        revocationNotification (5)
+         -- notification that a revocation has occurred  }
+     */
+    interface IPKIStatus {
+        /**
+         * TimeStampToken is present as requested
+         */
+        const Int32 PKIStatus_GRANTED = 0;
+
+        /**
+        * TimeStampToken is present with modifications
+        */
+        const Int32 PKIStatus_GRANTED_WITH_MODS = 1;
+
+        /**
+         * rejected
+         */
+        const Int32 PKIStatus_REJECTION = 2;
+
+        /**
+         * waiting
+         */
+        const Int32 PKIStatus_WAITING = 3;
+
+        /**
+         * revocation time comes soon
+         */
+        const Int32 PKIStatus_REVOCATION_WARNING = 4;
+
+        /**
+         * revoked
+         */
+        const Int32 PKIStatus_REVOCATION_NOTIFICATION = 5;
+
+        /**
+         * @return int value of the status
+         */
+        GetStatus(
+            [out] Int32* status);
+    }
+
+    interface IPKIStatusHelper {
+        GetInstance(
+            [in] Int32 status,
+            [out] IPKIStatus** result);
+    }
+
+    } // namespace Tsp
+    } // namespace X509
+    } // namespace Security
+    } // namespace Harmony
+    } // namespace Apache
+    } // namespace Org
+}

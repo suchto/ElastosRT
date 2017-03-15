@@ -1,0 +1,81 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Security.IPrincipal;
+    interface Elastosx.Net.Ssl.ISSLEngine;
+
+    namespace Elastosx {
+    namespace Net {
+    namespace Ssl {
+
+    /**
+     * The abstract extension for the {@code X509KeyManager} interface.
+     *
+     * @Involve
+     * interface IX509KeyManager
+     * interface IKeyManager
+     */
+    [deprecated]
+    interface IX509ExtendedKeyManager {
+        /**
+         * Chooses an alias for the client side of an SSL connection to authenticate
+         * it with the specified public key type and certificate issuers.
+         *
+         * @param keyType
+         *            the list of public key algorithm names.
+         * @param issuers
+         *            the list of certificate issuers, or {@code null} if any issuer
+         *            will do.
+         * @param engine
+         *            the {@code SSLEngine} for the connection, or {@code null} if
+         *            no engine is predefined.
+         * @return the alias name of a matching key or {@code null} if there are no
+         *         matches.
+         */
+        ChooseEngineClientAlias(
+            [in] ArrayOf<String>* keyType,
+            [in] ArrayOf<IPrincipal*>* issuers,
+            [in] ISSLEngine* engine,
+            [out] String* alias);
+
+        /**
+         * Chooses an alias for the server side of an SSL connection to authenticate
+         * it with the specified public key type and certificate issuers.
+         *
+         * @param keyType
+         *            the list of public key algorithm names.
+         * @param issuers
+         *            the list of certificate issuers, or {@code null} if any issuer
+         *            will do.
+         * @param engine
+         *            the {@code SSLEngine} for the connection, or {@code null} if
+         *            no engine is predefined.
+         * @return the alias name of a matching key or {@code null} if there are no
+         *         matches.
+         */
+        ChooseEngineServerAlias(
+            [in] String keyType,
+            [in] ArrayOf<IPrincipal*>* issuers,
+            [in] ISSLEngine* engine,
+            [out] String* alias);
+    }
+
+    } // namespace Ssl
+    } // namespace Net
+    } // namespace Elastosx
+}

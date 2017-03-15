@@ -1,0 +1,95 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Utility.IEnumeration;
+    interface Elastosx.Net.Ssl.ISSLSession;
+
+    namespace Elastosx {
+    namespace Net {
+    namespace Ssl {
+
+    [deprecated]
+    interface ISSLSessionContext {
+        /**
+         * Returns an iterable of all session identifiers in this session context.
+         *
+         * @return an iterable of all session identifiers in this session context.
+         */
+        GetIds(
+            [out] IEnumeration** ids);
+
+        /**
+         * Returns the session for the specified session identifier.
+         *
+         * @param sessionId
+         *            the session identifier of the session to look up.
+         * @return the session for the specified session identifier, or {@code null}
+         *         if the specified session identifier does not refer to a session
+         *         in this context.
+         */
+        GetSession(
+            [in] ArrayOf<Byte>* sessionId,
+            [out] ISSLSession** session);
+
+        /**
+         * Returns the size of the session cache for this session context.
+         *
+         * @return the size of the session cache for this session context, or
+         *         {@code zero} if unlimited.
+         */
+        GetSessionCacheSize(
+            [out] Int32* size);
+
+        /**
+         * Returns the timeout for sessions in this session context. Sessions
+         * exceeding the timeout are invalidated.
+         *
+         * @return the timeout in seconds, or {@code zero} if unlimited.
+         */
+        GetSessionTimeout(
+            [out] Int32* timeout);
+
+        /**
+         * Sets the size of the session cache for this session context.
+         *
+         * @param size
+         *            the size of the session cache, or {@code zero} for unlimited
+         *            cache size.
+         * @throws IllegalArgumentException
+         *             if {@code size} is negative.
+         */
+        SetSessionCacheSize(
+            [in] Int32 size);
+
+        /**
+         * Sets the timeout for sessions in this context. Sessions exceeding the
+         * timeout are invalidated.
+         *
+         * @param seconds
+         *            the timeout in seconds, or {@code zero} if unlimited.
+         * @throws IllegalArgumentException
+         *             if {@code seconds} is negative.
+         */
+        SetSessionTimeout(
+            [in] Int32 seconds);
+    }
+
+    } // namespace Ssl
+    } // namespace Net
+    } // namespace Elastosx
+}

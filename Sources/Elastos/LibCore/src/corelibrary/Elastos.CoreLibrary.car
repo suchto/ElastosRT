@@ -1,0 +1,93 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    submodule Elastos.CoreLibrary.Core {
+    merge("../../car/elastos/core.car");
+    merge("../../car/elastos/math.car");
+    merge("../../car/elastos/system.car");
+    }
+
+    submodule Elastos.CoreLibrary.Utility {
+    merge("../../car/elastos/utility2.car");
+    }
+
+    submodule Elastos.CoreLibrary.IO {
+    merge("../../car/elastos/io2.car");
+    }
+
+    submodule Elastos.CoreLibrary.Security {
+    merge("../../car/elastos/security.car");
+    }
+
+    submodule Elastos.CoreLibrary.IO {
+    merge("../../car/elastos/io.car");
+    }
+
+    submodule Elastos.CoreLibrary.Net {
+    merge("../../car/elastos/net.car");
+    }
+
+    submodule Elastos.CoreLibrary.Text {
+    merge("../../car/elastos/text.car");
+    }
+
+    submodule Elastos.CoreLibrary.Utility {
+    merge("../../car/elastos/utility.car");
+    }
+
+    submodule Elastos.CoreLibrary.Utility.Concurrent {
+    merge("../../car/elastos/utility.concurrent.car");
+    }
+
+    submodule Elastos.CoreLibrary.Utility.Zip {
+    merge("../../car/elastos/utility.zip.car");
+    }
+
+    submodule Elastos.CoreLibrary.Sql {
+    merge("../../car/elastos/sql.car");
+    }
+
+    submodule Elastos.CoreLibrary.Libcore {
+    merge("../../car/libcore/icu.car");
+    merge("../../car/libcore/io.car");
+    merge("../../car/libcore/utility.car");
+    merge("../../car/libcore/net.car");
+    }
+
+    submodule Elastos.CoreLibrary.Extensions {
+    merge("../../car/elastosx/Exceptions.car");
+    merge("../../car/elastosx/crypto.car");
+    merge("../../car/elastosx/net.car");
+    merge("../../car/elastosx/security.car");
+    merge("../../car/elastosx/sql.car");
+    merge("../../car/elastosx/xml.car");
+    }
+
+    submodule Elastos.CoreLibrary.External {
+    merge("../../car/org/w3c.car");
+    merge("../../car/org/xml.car");
+    merge("../../car/org/xmlpull.car");
+    merge("../../car/org/kxml2.car");
+    merge("../../car/org/json.car");
+    }
+
+    submodule Elastos.CoreLibrary.Apache {
+    merge("../../car/org/apache.car");
+    }
+
+}

@@ -1,0 +1,202 @@
+#=========================================================================
+# Copyright (C) 2012 The Elastos Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#=========================================================================
+
+TARGET_NAME = Org.Conscrypt
+TARGET_TYPE = eco
+
+include $(MAKEDIR)/../../../../../LibCore/src/sources.inc
+
+INCLUDES += $(MAKEDIR)/../../../inc
+INCLUDES += $(MAKEDIR)/../../../inc/org/conscrypt
+INCLUDES += $(MAKEDIR)/../../../../../LibCore/inc/corelibrary
+
+SOURCES = Org.Conscrypt.car
+SOURCES += AbstractSessionContext.cpp
+SOURCES += CAbstractSessionContext.cpp
+SOURCES += ByteArray.cpp
+SOURCES += ChainStrengthAnalyzer.cpp
+SOURCES += CChainStrengthAnalyzer.cpp
+SOURCES += CClientSessionContext.cpp
+SOURCES += CryptoUpcalls.cpp
+SOURCES += CCryptoUpcalls.cpp
+SOURCES += CDefaultSSLContextImpl.cpp
+SOURCES += FileClientSessionCache.cpp
+SOURCES += CFileClientSessionCache.cpp
+SOURCES += KeyManagerFactoryImpl.cpp
+SOURCES += CKeyManagerFactoryImpl.cpp
+SOURCES += KeyManagerImpl.cpp
+SOURCES += CKeyManagerImpl.cpp
+SOURCES += NativeCrypto.cpp
+SOURCES += OpenSSLBIOInputStream.cpp
+SOURCES += COpenSSLBIOInputStream.cpp
+SOURCES += OpenSSLBIOSink.cpp
+SOURCES += COpenSSLBIOSink.cpp
+SOURCES += COpenSSLBIOSinkHelper.cpp
+SOURCES += OpenSSLBIOSource.cpp
+SOURCES += COpenSSLBIOSource.cpp
+SOURCES += COpenSSLBIOSourceHelper.cpp
+SOURCES += OpenSSLCipher.cpp
+SOURCES += OpenSSLCipherContext.cpp
+SOURCES += OpenSSLCipherRSA.cpp
+SOURCES += OpenSSLContextImpl.cpp
+SOURCES += COpenSSLContextImpl.cpp
+SOURCES += OpenSSLDHKeyFactory.cpp
+SOURCES += COpenSSLDHKeyFactory.cpp
+SOURCES += OpenSSLDHKeyPairGenerator.cpp
+SOURCES += COpenSSLDHKeyPairGenerator.cpp
+SOURCES += OpenSSLDHPrivateKey.cpp
+SOURCES += COpenSSLDHPrivateKey.cpp
+SOURCES += OpenSSLDHPublicKey.cpp
+SOURCES += COpenSSLDHPublicKey.cpp
+SOURCES += OpenSSLDigestContext.cpp
+SOURCES += COpenSSLDigestContext.cpp
+SOURCES += OpenSSLDSAKeyFactory.cpp
+SOURCES += COpenSSLDSAKeyFactory.cpp
+SOURCES += OpenSSLDSAKeyPairGenerator.cpp
+SOURCES += COpenSSLDSAKeyPairGenerator.cpp
+SOURCES += OpenSSLDSAParams.cpp
+SOURCES += COpenSSLDSAParams.cpp
+SOURCES += OpenSSLDSAPrivateKey.cpp
+SOURCES += COpenSSLDSAPrivateKey.cpp
+SOURCES += COpenSSLDSAPrivateKeyHelper.cpp
+SOURCES += OpenSSLDSAPublicKey.cpp
+SOURCES += COpenSSLDSAPublicKey.cpp
+SOURCES += COpenSSLECDHKeyAgreement.cpp
+SOURCES += COpenSSLECGroupContext.cpp
+SOURCES += COpenSSLECGroupContextHelper.cpp
+SOURCES += OpenSSLECKeyFactory.cpp
+SOURCES += COpenSSLECKeyFactory.cpp
+SOURCES += COpenSSLECKeyPairGenerator.cpp
+SOURCES += OpenSSLECPointContext.cpp
+SOURCES += COpenSSLECPointContextHelper.cpp
+SOURCES += COpenSSLECPrivateKey.cpp
+SOURCES += COpenSSLECPrivateKeyHelper.cpp
+SOURCES += COpenSSLECPublicKey.cpp
+SOURCES += COpenSSLECPublicKeyHelper.cpp
+SOURCES += OpenSSLEngine.cpp
+SOURCES += COpenSSLEngine.cpp
+SOURCES += COpenSSLEngineHelper.cpp
+SOURCES += OpenSSLEngineImpl.cpp
+SOURCES += COpenSSLEngineImpl.cpp
+
+SOURCES += COpenSSLProvider.cpp
+SOURCES += OpenSSLKey.cpp
+SOURCES += COpenSSLKey.cpp
+SOURCES += OpenSSLMac.cpp
+SOURCES += OpenSSLMessageDigestJDK.cpp
+SOURCES += COpenSSLMessageDigestJDK.cpp
+SOURCES += COpenSSLMessageDigestJDKMD5.cpp
+SOURCES += COpenSSLMessageDigestJDKSHA1.cpp
+SOURCES += COpenSSLMessageDigestJDKSHA224.cpp
+SOURCES += COpenSSLMessageDigestJDKSHA256.cpp
+SOURCES += COpenSSLMessageDigestJDKSHA384.cpp
+SOURCES += COpenSSLMessageDigestJDKSHA512.cpp
+SOURCES += OpenSSLNativeReference.cpp
+SOURCES += OpenSSLProvider.cpp
+SOURCES += OpenSSLRSAKeyFactory.cpp
+SOURCES += COpenSSLRSAKeyFactory.cpp
+SOURCES += OpenSSLRSAKeyPairGenerator.cpp
+SOURCES += COpenSSLRSAKeyPairGenerator.cpp
+SOURCES += OpenSSLRSAPrivateCrtKey.cpp
+SOURCES += COpenSSLRSAPrivateCrtKey.cpp
+SOURCES += OpenSSLRSAPrivateKey.cpp
+SOURCES += COpenSSLRSAPrivateKey.cpp
+SOURCES += OpenSSLRSAPublicKey.cpp
+SOURCES += COpenSSLRSAPublicKey.cpp
+SOURCES += OpenSSLRandom.cpp
+SOURCES += COpenSSLRandom.cpp
+SOURCES += OpenSSLSecretKey.cpp
+SOURCES += COpenSSLSecretKey.cpp
+SOURCES += OpenSSLServerSocketFactoryImpl.cpp
+SOURCES += COpenSSLServerSocketFactoryImpl.cpp
+SOURCES += OpenSSLSessionImpl.cpp
+SOURCES += COpenSSLSessionImpl.cpp
+SOURCES += OpenSSLSignature.cpp
+SOURCES += COpenSSLSignature.cpp
+SOURCES += COpenSSLSignatureMD5RSA.cpp
+SOURCES += COpenSSLSignatureSHA1RSA.cpp
+SOURCES += COpenSSLSignatureSHA224RSA.cpp
+SOURCES += COpenSSLSignatureSHA256RSA.cpp
+SOURCES += COpenSSLSignatureSHA384RSA.cpp
+SOURCES += COpenSSLSignatureSHA512RSA.cpp
+SOURCES += COpenSSLSignatureSHA1DSA.cpp
+SOURCES += COpenSSLSignatureSHA1ECDSA.cpp
+SOURCES += COpenSSLSignatureSHA224ECDSA.cpp
+SOURCES += COpenSSLSignatureSHA256ECDSA.cpp
+SOURCES += COpenSSLSignatureSHA384ECDSA.cpp
+SOURCES += COpenSSLSignatureSHA512ECDSA.cpp
+SOURCES += OpenSSLSignatureRawRSA.cpp
+SOURCES += COpenSSLSignatureRawRSA.cpp
+SOURCES += OpenSSLSocketFactoryImpl.cpp
+SOURCES += COpenSSLSocketFactoryImpl.cpp
+SOURCES += OpenSSLSocketImpl.cpp
+SOURCES += COpenSSLSocketImpl.cpp
+SOURCES += OpenSSLSocketImplWrapper.cpp
+SOURCES += COpenSSLSocketImplWrapper.cpp
+SOURCES += OpenSSLX509CRL.cpp
+SOURCES += OpenSSLX509CRLEntry.cpp
+SOURCES += COpenSSLX509CRLEntry.cpp
+SOURCES += OpenSSLX509CertPath.cpp
+SOURCES += COpenSSLX509CertPath.cpp
+SOURCES += OpenSSLX509Certificate.cpp
+SOURCES += COpenSSLX509Certificate.cpp
+SOURCES += OpenSSLX509CertificateFactory.cpp
+SOURCES += COpenSSLX509CertificateFactory.cpp
+SOURCES += SSLNullSession.cpp
+SOURCES += CSSLNullSession.cpp
+SOURCES += SSLParametersImpl.cpp
+SOURCES += CSSLParametersImpl.cpp
+SOURCES += CSSLParametersImplHelper.cpp
+SOURCES += ServerSessionContext.cpp
+SOURCES += CServerSessionContext.cpp
+SOURCES += X509PublicKey.cpp
+SOURCES += CX509PublicKey.cpp
+SOURCES += Platform.cpp
+SOURCES += CPlatform.cpp
+SOURCES += COpenSSLMacHmacMD5.cpp
+SOURCES += OpenSSLKeyGeneratorTest.cpp
+SOURCES += COpenSSLKeyGeneratorTest.cpp
+SOURCES += COpenSSLCipherAESECBNoPadding.cpp
+SOURCES += COpenSSLCipherRSAPKCS1.cpp
+SOURCES += COpenSSLCipherRSARaw.cpp
+SOURCES += COpenSSLCipherAESCBCNoPadding.cpp
+SOURCES += COpenSSLCipherAESCFB.cpp
+SOURCES += COpenSSLCipherAESECBPKCS5Padding.cpp
+SOURCES += COpenSSLCipherAESCBCPKCS5Padding.cpp
+SOURCES += COpenSSLCipherAESCTR.cpp
+SOURCES += COpenSSLCipherAESOFB.cpp
+SOURCES += COpenSSLCipherARC4.cpp
+SOURCES += COpenSSLCipherDESEDECBCPKCS5Padding.cpp
+SOURCES += COpenSSLCipherDESEDEECBNoPadding.cpp
+SOURCES += COpenSSLCipherDESEDEOFB.cpp
+SOURCES += COpenSSLCipherDESEDECBCNoPadding.cpp
+SOURCES += COpenSSLCipherDESEDECFB.cpp
+SOURCES += COpenSSLCipherDESEDEECBPKCS5Padding.cpp
+SOURCES += COpenSSLMacHmacSHA1.cpp
+SOURCES += COpenSSLMacHmacSHA224.cpp
+SOURCES += COpenSSLMacHmacSHA256.cpp
+SOURCES += COpenSSLMacHmacSHA384.cpp
+SOURCES += COpenSSLMacHmacSHA512.cpp
+SOURCES += OpenSSLX509V3CertificateGenerator.cpp
+SOURCES += COpenSSLX509V3CertificateGeneratorHelper.cpp
+
+SOURCES += Elastos.CoreLibrary.cpp
+
+LIBRARIES  = $(XDK_USER_LIB)/Elastos.Runtime.lib
+LIBRARIES += $(XDK_TARGETS)/Elastos.Runtime.eco
+LIBRARIES += $(XDK_TARGETS)/Elastos.CoreLibrary.eco
+LIBRARIES += $(XDK_USER_LIB)/crt0.lib
+LIBRARIES += -llog -lssl -lcrypto

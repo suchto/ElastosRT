@@ -1,0 +1,62 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Libcore {
+    namespace IO {
+
+    /**
+     * A memory-mapped file. Use {@link #mmap} to map a file, {@link #close} to unmap a file,
+     * and either {@link #bigEndianIterator} or {@link #littleEndianIterator} to get a seekable
+     * {@link BufferIterator} over the mapped data.
+     *
+     * @Involve
+     * interface ICloseable;
+     */
+
+    interface IMemoryMappedFile {
+        /**
+         * Returns a new iterator that treats the mapped data as big-endian.
+         */
+        BigEndianIterator(
+            [out] IBufferIterator** it);
+
+        /**
+         * Returns a new iterator that treats the mapped data as little-endian.
+         */
+        LittleEndianIterator(
+            [out] IBufferIterator** it);
+
+        /**
+         * Returns the size in bytes of the memory-mapped region.
+         */
+        Size(
+            [out] Int64* size);
+    }
+
+    interface IMemoryMappedFileHelper {
+        /**
+         * Use this to mmap the whole file read-only.
+         */
+        MmapRO(
+            [in] String path,
+            [out] IMemoryMappedFile** file);
+    }
+
+    } // namespace IO
+    } // namespace Libcore
+}

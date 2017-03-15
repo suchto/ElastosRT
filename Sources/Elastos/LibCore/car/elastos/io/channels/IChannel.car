@@ -1,0 +1,49 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Elastos {
+    namespace IO {
+    namespace Channels {
+
+    /*
+     * A channel is a conduit to I/O services covering such itemes as files, sockets,
+     * hw devices, IO ports or some software component.
+     *
+     * Channels are open upon creation, and can be closed explicitly. Once a channel
+     * is closed it cannot be re-opened, and any attempts to perform IO operations
+     * on the closed channel result in a ClosedChannelException error.
+     *
+     * Particular implementations or sub-interfaces of Channel dicate whether they are
+     * thread safe or not.
+     */
+     /**
+     * @Involve
+     * interface ICloseable;
+     */
+    interface IChannel {
+        /**
+         * Returns true if this channel is open.
+         */
+        IsOpen(
+            [out] Boolean* rst);
+    }
+
+    } // namespace Channels
+    } // namespace IO
+    } // namespace Elastos
+}

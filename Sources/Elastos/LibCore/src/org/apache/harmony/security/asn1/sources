@@ -1,0 +1,85 @@
+#=========================================================================
+# Copyright (C) 2012 The Elastos Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#=========================================================================
+
+TARGET_NAME= asn1
+TARGET_TYPE= lib
+
+C_DEFINES += -DELASTOS_CORELIBRARY
+
+include $(MAKEDIR)/../../../../../sources.inc
+
+INCLUDES += $(PREBUILD_INC)/sys;
+INCLUDES += ../../../../../corelibrary
+INCLUDES += $(MAKEDIR)/../../../../../../inc
+INCLUDES += $(MAKEDIR)/../../../../../../inc/elastos
+INCLUDES += $(MAKEDIR)/../../../../../../inc/elastos/core
+INCLUDES += $(MAKEDIR)/../../../../../../inc/elastos/math
+INCLUDES += $(MAKEDIR)/../../../../../../inc/elastos/text
+INCLUDES += $(MAKEDIR)/../../../../../../inc/elastos/utility
+INCLUDES += $(MAKEDIR)/../../../../../../inc/org/apache/harmony/security
+INCLUDES += $(MAKEDIR)/../../../../../../inc/org/apache/harmony/security/asn1
+
+SOURCES = ASN1Constructed.cpp
+SOURCES += ASN1Primitive.cpp
+SOURCES += ASN1StringType.cpp
+SOURCES += ASN1Time.cpp
+SOURCES += ASN1Type.cpp
+SOURCES += ASN1TypeCollection.cpp
+SOURCES += ASN1Sequence.cpp
+SOURCES += ASN1ValueCollection.cpp
+SOURCES += CASN1Any.cpp
+#SOURCES += CASN1AnyHelper.cpp
+SOURCES += ASN1BitString.cpp
+SOURCES += CASN1BitString.cpp
+#SOURCES += CASN1BitStringHelper.cpp
+SOURCES += CASN1Boolean.cpp
+#SOURCES += CASN1BooleanHelper.cpp
+SOURCES += ASN1Choice.cpp
+SOURCES += CASN1Enumerated.cpp
+#SOURCES += CASN1EnumeratedHelper.cpp
+SOURCES += CASN1Explicit.cpp
+SOURCES += CASN1GeneralizedTime.cpp
+#SOURCES += CASN1GeneralizedTimeHelper.cpp
+SOURCES += CASN1Implicit.cpp
+SOURCES += CASN1Integer.cpp
+#SOURCES += CASN1IntegerHelper.cpp
+SOURCES += ASN1NamedBitList.cpp
+SOURCES += ASN1OctetString.cpp
+SOURCES += CASN1OctetStringHelper.cpp
+SOURCES += ASN1Oid.cpp
+SOURCES += CASN1Oid.cpp
+
+#SOURCES += CASN1OidHelper.cpp
+SOURCES += ASN1SequenceOf.cpp
+#SOURCES += CASN1Sequence.cpp
+#SOURCES += CASN1SequenceOf.cpp
+SOURCES += CASN1Set.cpp
+SOURCES += ASN1SetOf.cpp
+SOURCES += CASN1SetOf.cpp
+#SOURCES += CASN1StringTypeHelper.cpp
+SOURCES += CASN1UTCTime.cpp
+#SOURCES += CASN1UTCTimeHelper.cpp
+SOURCES += BerInputStream.cpp
+SOURCES += CBerInputStream.cpp
+#SOURCES += CBerInputStreamHelper.cpp
+SOURCES += BerOutputStream.cpp
+SOURCES += CBerOutputStream.cpp
+SOURCES += CBitString.cpp
+SOURCES += CDerInputStream.cpp
+SOURCES += CDerOutputStream.cpp
+SOURCES += CObjectIdentifier.cpp
+#SOURCES += CObjectIdentifierHelper.cpp
+SOURCES += asn1.cpp

@@ -1,0 +1,20 @@
+;
+; Purpose: Drop/Pack List for SDK
+;
+; Format:  SrcFile/Folder or
+;          SrcFile/Folder [DestFolder]
+;
+Elastos.Runtime.eco
+Elastos.CoreLibrary.eco
+Elastos.Droid.Core.eco
+Elastos.Droid.Server.eco
+Elastos.Droid.JavaProxy.eco
+elservicemanager
+ElApp_process
+pm
+Elastos.Droid.Commands.Pm.eco
+Org.Conscrypt.eco
+;Elastos.Droid.Commands.Monkey.eco
+;Elastos.Droid.Commands.Am.eco
+;Eunit.eco
+;Elastos.Droid.Test.eco

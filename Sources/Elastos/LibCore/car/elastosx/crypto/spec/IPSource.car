@@ -1,0 +1,63 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Elastosx {
+    namespace Crypto {
+    namespace Spec {
+
+    /**
+     * The source of the label <code>L</code> as specified in <a
+     * href="http://www.ietf.org/rfc/rfc3447.txt"> PKCS #1</a>.
+     */
+    interface IPSource {
+        /**
+         * Returns the source algorithm identifier.
+         *
+         * @return the source algorithm identifier.
+         */
+        GetAlgorithm(
+            [out] String * result);
+    }
+
+    /**
+     * The explicit specification of the parameter <code>P</code> used in the
+     * source algorithm.
+     */
+    interface IPSpecified {
+        /**
+         * Returns a copy of the value of the parameter <code>P</code>.
+         *
+         * @return a copy of the value of the parameter <code>P</code>
+         */
+        GetValue(
+            [out, callee] ArrayOf<Byte> * value);
+    }
+
+    interface IPSpecifiedHelper {
+        /**
+         * The instance of <code>PSpecified</code> with the default value
+         * <code>byte[0]</code> for <code>P</code>
+         */
+        GetDEFAULT(
+            [out] IPSpecified** result);
+    }
+
+    } // namespace Spec
+    } // namespace Crypto
+    } // namespace Elastosx
+}

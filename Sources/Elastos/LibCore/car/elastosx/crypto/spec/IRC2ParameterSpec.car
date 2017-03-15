@@ -1,0 +1,54 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Elastosx {
+    namespace Crypto {
+    namespace Spec {
+
+    /**
+     * The algorithm parameter specification for the <a
+     * href="http://www.ietf.org/rfc/rfc2268.txt">RC2</a> algorithm.
+     */
+    /**
+     * @Involve
+     * interface Elastos.Security.Spec.IAlgorithmParameterSpec;
+     */
+    interface IRC2ParameterSpec {
+
+        /**
+         * Returns the effective key length (in bits).
+         *
+         * @return the effective key length (in bits).
+         */
+        GetEffectiveKeyBits(
+            [out] Int32 * bits);
+
+        /**
+         * Returns a copy of the initialization vector.
+         *
+         * @return a copy of the initialization vector, or null if none specified.
+         */
+        GetIV(
+            [out, callee] ArrayOf<Byte> * iv);
+    }
+
+
+    } // namespace Spec
+    } // namespace Crypto
+    } // namespace Elastosx
+}

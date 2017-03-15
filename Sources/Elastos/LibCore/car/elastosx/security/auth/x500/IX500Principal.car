@@ -1,0 +1,73 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Utility.IMap;
+
+    namespace Elastosx {
+    namespace Security {
+    namespace Auth {
+    namespace X500 {
+
+    /**
+     * @Involve
+     * interface Elastos.Security.IPrincipal
+     */
+    interface IX500Principal {
+        /*
+         * Defines a constant for the canonical string format of distinguished
+         * names.
+         */
+        const String CANONICAL = "CANONICAL";
+
+        /**
+         * Defines a constant for the RFC 1779 string format of distinguished
+         * names.
+         */
+        const String RFC1779 = "RFC1779";
+
+        /**
+         * Defines a constant for the RFC 2253 string format of distinguished
+         * names.
+         */
+        const String RFC2253 = "RFC2253";
+
+        /**
+         * Returns an ASN.1 DER-encoded representation of the distinguished name
+         * contained in this X.500 principal.
+         *
+         * @return the ASN.1 DER-encoded representation
+         */
+        GetEncoded(
+            [out, callee] ArrayOf<Byte>* encodedName);
+
+        GetName(
+            [in] String format,
+            [out] String* name);
+
+        //IMap<String, String>
+        GetName(
+            [in] String format,
+            [in] IMap* oidMap,
+            [out] String* name);
+    }
+
+    } // namespace X500
+    } // namespace Auth
+    } // namespace Security
+    } // namespace Elastosx
+}

@@ -1,0 +1,54 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    using interface Elastosx.Net.Ssl.ISSLSession;
+
+    namespace Org {
+    namespace Conscrypt {
+
+    [deprecated]
+    interface ISSLClientSessionCache {
+        /**
+         * Gets data from a pre-existing session for a given server host and port.
+         *
+         * @param host from {@link javax.net.ssl.SSLSession#getPeerHost()}
+         * @param port from {@link javax.net.ssl.SSLSession#getPeerPort()}
+         * @return the session data or null if none is cached
+         * @throws NullPointerException if host is null
+         */
+        GetSessionData(
+            [in] String host,
+            [in] Int32 port,
+            [out, callee] ArrayOf<Byte>* result);
+
+        /**
+         * Stores session data for the given session.
+         *
+         * @param session to cache data for
+         * @param sessionData to cache
+         * @throws NullPointerException if session, result of
+         *  {@code session.getPeerHost()} or data is null
+         */
+        PutSessionData(
+            [in] ISSLSession* session,
+            [in] ArrayOf<Byte>* sessionData);
+    }
+
+    } // namespace Conscrypt
+    } // namespace Org
+}

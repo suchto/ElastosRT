@@ -1,0 +1,190 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Core.IComparator;
+    interface Elastos.Utility.INavigableSet;
+    interface Elastos.Utility.IIterator;
+    interface Elastos.Utility.ISortedSet;
+
+    namespace Elastos {
+    namespace Utility {
+
+    /**
+     * @Involve
+     * interface ICollection;
+     * interface Iterable;
+     * interface ISet;
+     * interface INavigableSet;
+     * interface ICloneable;
+     * interface ISerializable;
+     */
+    [deprecated]
+    interface ITreeSet {
+
+        /**
+         * interfaces from INavigableSet
+         *
+         */
+        GetLower(
+            [in] IInterface* e,
+            [out] IInterface** outface);
+        GetFloor(
+            [in] IInterface* e,
+            [out] IInterface** outface);
+
+        GetCeiling(
+            [in] IInterface* e,
+            [out] IInterface** outface);
+
+        GetHigher(
+            [in] IInterface* e,
+            [out] IInterface** outface);
+
+        PollFirst(
+            [out] IInterface** outface);
+
+        PollLast(
+            [out] IInterface** outface);
+
+        GetDescendingSet(
+            [out] INavigableSet** outnav);
+
+        GetDescendingIterator(
+            [out] IIterator** outiter);
+
+        GetSubSet(
+            [in] IInterface* fromElement,
+            [in] Boolean fromInclusive,
+            [in] IInterface* toElement,
+            [in] Boolean toInclusive,
+            [out] INavigableSet** outnav);
+
+        GetHeadSet(
+            [in] IInterface* toElement,
+            [in] Boolean inclusive,
+            [out] INavigableSet** outnav);
+
+        GetTailSet(
+            [in] IInterface* fromElement,
+            [in] Boolean inclusive,
+            [out] INavigableSet** outnav);
+
+
+        /**
+         * interfaces from ISortedSet
+         *
+         */
+        GetComparator(
+            [out] IComparator** outcom);
+
+        GetFirst(
+            [out] IInterface** outface);
+
+        GetHeadSet(
+            [in] IInterface* end,
+            [out] ISortedSet** outsort);
+
+        GetLast(
+            [out] IInterface** outface);
+
+        GetSubSet(
+            [in] IInterface* start,
+            [in] IInterface* end,
+            [out] ISortedSet** outsort);
+
+        GetTailSet(
+            [in] IInterface* start,
+            [out] ISortedSet** outsort);
+
+
+        /**
+         * interfaces from ICollection
+         *
+         */
+        GetIterator(
+            [out] IIterator** it);
+
+        Add(
+            [in] IInterface* object,
+            [out] Boolean* modified);
+
+        Add(
+            [in] IInterface* object);
+
+        AddAll(
+            [in] ICollection* collection,
+            [out] Boolean* modified);
+
+        AddAll(
+            [in] ICollection* collection);
+
+        Clear();
+
+        Contains(
+            [in] IInterface* object,
+            [out] Boolean* result);
+
+        ContainsAll(
+            [in] ICollection* collection,
+            [out] Boolean* result);
+
+        Equals(
+            [in] IInterface* object,
+            [out] Boolean* result);
+
+        GetHashCode(
+            [out] Int32* hashCode);
+
+        IsEmpty(
+            [out] Boolean* result);
+
+        Remove(
+            [in] IInterface* object,
+            [out] Boolean* modified);
+
+        Remove(
+            [in] IInterface* object);
+
+        RemoveAll(
+            [in] ICollection* collection,
+            [out] Boolean* modified);
+
+        RemoveAll(
+            [in] ICollection* collection);
+
+        RetainAll(
+            [in] ICollection* collection,
+            [out] Boolean* modified);
+
+        RetainAll(
+            [in] ICollection* collection);
+
+        GetSize(
+            [out] Int32* size);
+
+        ToArray(
+            [out, callee] ArrayOf<IInterface*>* array);
+
+        ToArray(
+            [in] ArrayOf<IInterface*>* inArray,
+            [out, callee] ArrayOf<IInterface*>* outArray);
+    }
+
+    } // namespace Utility
+    } // namespace Elastos
+}

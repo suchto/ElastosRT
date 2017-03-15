@@ -1,0 +1,122 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Libcore.ICU.ICollationElementIteratorICU;
+    interface Elastos.Text.ICollationKey;
+    interface Elastos.Text.ICharacterIterator;
+
+    namespace Libcore {
+    namespace ICU {
+
+    /**
+     * @Involve
+     * interface ICloneable;
+     */
+
+    interface IRuleBasedCollatorICU {
+
+        const Int32 VALUE_PRIMARY = 0;
+
+        const Int32 VALUE_SECONDARY = 1;
+
+        const Int32 VALUE_TERTIARY = 2;
+
+        const Int32 VALUE_DEFAULT_STRENGTH = VALUE_TERTIARY;
+
+        const Int32 VALUE_QUATERNARY = 3;
+
+        const Int32 VALUE_IDENTICAL = 15;
+
+        const Int32 VALUE_OFF = 16;
+
+        const Int32 VALUE_ON = 17;
+
+        const Int32 VALUE_SHIFTED = 20;
+
+        const Int32 VALUE_NON_IGNORABLE = 21;
+
+        const Int32 VALUE_LOWER_FIRST = 24;
+
+        const Int32 VALUE_UPPER_FIRST = 25;
+
+        const Int32 VALUE_ON_WITHOUT_HANGUL = 28;
+
+        const Int32 VALUE_ATTRIBUTE_VALUE_COUNT = 29;
+
+        // Values from the UColAttribute enum.
+        const Int32 FRENCH_COLLATION = 0;
+
+        const Int32 ALTERNATE_HANDLING = 1;
+
+        const Int32 CASE_FIRST = 2;
+
+        const Int32 CASE_LEVEL = 3;
+
+        const Int32 DECOMPOSITION_MODE = 4;
+
+        const Int32 STRENGTH = 5;
+
+        Compare(
+            [in] String source,
+            [in] String target,
+            [out] Int32 * value);
+
+        GetDecomposition(
+            [out] Int32 * value);
+
+        SetDecomposition(
+            [in] Int32 mode);
+
+        GetStrength(
+            [out] Int32 * value);
+
+        SetStrength(
+            [in] Int32 strength);
+
+        SetAttribute(
+            [in] Int32 type,
+            [in] Int32 value);
+
+        GetAttribute(
+            [in] Int32 type,
+            [out] Int32 * value);
+
+        GetCollationKey(
+            [in] String source,
+            [out] ICollationKey ** outkey);
+
+        GetRules(
+            [out] String * str);
+
+        GetCollationElementIterator(
+            [in] String source,
+            [out] ICollationElementIteratorICU ** outicu);
+
+        GetCollationElementIterator(
+            [in] ICharacterIterator * it,
+            [out] ICollationElementIteratorICU ** outicu);
+
+        Equals(
+            [in] String source,
+            [in] String target,
+            [out] Boolean * value);
+    }
+
+    } // IO
+    } // namespace LibCore
+}

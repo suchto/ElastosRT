@@ -1,0 +1,86 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Core.IStringBuilder;
+    interface Org.Apache.Harmony.Security.Asn1.IASN1Type;
+    interface Org.Apache.Harmony.Security.Asn1.IASN1Sequence;
+    interface Org.Apache.Harmony.Security.Utils.IObjectIdentifier;
+    interface Org.Apache.Harmony.Security.X501.IAttributeValue;
+
+    namespace Org {
+    namespace Apache {
+    namespace Harmony {
+    namespace Security {
+    namespace X501 {
+
+    /**
+     * X.501 AttributeTypeAndValue
+     */
+    interface IAttributeTypeAndValue {
+        /**
+         * Appends AttributeTypeAndValue string representation
+         *
+         * @param attrFormat - format of DN
+         */
+        AppendName(
+            [in] String attrFormat,
+            [in] IStringBuilder* sb);
+
+        /**
+         * Gets type of the AttributeTypeAndValue
+         */
+        GetType(
+            [out] IObjectIdentifier** identifier);
+
+        GetValue(
+            [out] IAttributeValue** value);
+    }
+
+    interface IAttributeTypeAndValueHelper {
+        GetDC(
+            [out] IObjectIdentifier** dc);
+
+        GetEMAILADDRESS(
+            [out] IObjectIdentifier** address);
+
+        /**
+         * Parses OID string representation.
+         *
+         * @param sOid
+         *            string representation of OID
+         *
+         * @throws IOException
+         *             if OID can not be created from its string representation
+         */
+        GetObjectIdentifier(
+            [in] String sOid,
+            [out] IObjectIdentifier** objectIdentifier);
+
+        GetAttributeValue(
+            [out] IASN1Type** attributeValue);
+
+        GetASN1(
+            [out] IASN1Sequence** asn1);
+    }
+
+    } // namespace X501
+    } // namespace Security
+    } // namespace Harmony
+    } // namespace Apache
+    } // namespace Org
+}

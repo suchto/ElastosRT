@@ -1,0 +1,41 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Elastosx {
+    namespace Crypto {
+
+    /**
+     * This class wraps an output stream and a cipher so that {@code write} methods
+     * send the data through the cipher before writing them to the underlying output
+     * stream.
+     * <p>
+     * The cipher must be initialized for the requested operation before being used
+     * by a {@code CipherOutputStream}. For example, if a cipher initialized for
+     * encryption is used with a {@code CipherOutputStream}, the {@code
+     * CipherOutputStream} tries to encrypt the data writing it out.
+     */
+    /**
+     * @Involve
+     * interface Elastos.IO.IFilterOutputStream
+     */
+    interface ICipherOutputStream {
+    }
+
+    } // namespace Crypto
+    } // namespace Elastosx
+}

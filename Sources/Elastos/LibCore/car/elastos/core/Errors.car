@@ -1,0 +1,33 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+//    const FAMILY_CORE = 0x21    // Core error codes
+
+//    #define FRAMEWORK_ERROR(c)      MAKE_ECODE(SEVERITY_ERROR, FAMILY_FRAMEWORK, c)
+//    #define FRAMEWORK_SUCCESS(c)    MAKE_SUCCESS(FAMILY_FRAMEWORK, c)
+
+    //==========================================================================
+    // Elastos Core error codes (Family: 0x21)
+    const E_OUT_OF_MEMORY_ERROR                         = 0xA1010000;
+    const E_ASSERTION_ERROR                             = 0xA1020000;
+    const E_INTERNAL_ERROR                              = 0xA1030000;
+    const E_ILLEGAL_ACCESS_ERROR                        = 0xA1040000;
+    const E_VERIFY_ERROR                                = 0xA1050000;
+    const E_UNKNOWN_ERROR                               = 0xA1060000;
+    const E_ABSTRACET_METHOD_ERROR                      = 0xA1070000;
+}

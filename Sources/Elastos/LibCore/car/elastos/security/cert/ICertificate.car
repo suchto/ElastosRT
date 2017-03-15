@@ -1,0 +1,109 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Security.IPublicKey;
+
+    namespace Elastos {
+    namespace Security {
+    namespace Cert {
+
+    /**
+     * Abstract class to represent identity certificates. It represents a way to
+     * verify the binding of a Principal and its public key. Examples are X.509,
+     * PGP, and SDSI.
+     */
+    /**
+      * @Involve
+      * interface ISerializable
+      */
+    interface ICertificate {
+        /**
+         * Returns the certificate type.
+         *
+         * @return the certificate type.
+         */
+        GetType(
+            [out] String* type);
+
+        /**
+         * Returns the encoded representation for this certificate.
+         *
+         * @return the encoded representation for this certificate.
+         * @throws CertificateEncodingException
+         *             if the encoding fails.
+         */
+        GetEncoded(
+            [out, callee] ArrayOf<Byte>* encoded);
+
+        /**
+         * Verifies that this certificate was signed with the given public key.
+         *
+         * @param key
+         *            PublicKey public key for which verification should be
+         *            performed.
+         * @throws CertificateException
+         *             if encoding errors are detected.
+         * @throws NoSuchAlgorithmException
+         *             if an unsupported algorithm is detected.
+         * @throws InvalidKeyException
+         *             if an invalid key is detected.
+         * @throws NoSuchProviderException
+         *             if there is no default provider.
+         * @throws SignatureException
+         *             if signature errors are detected.
+         */
+        Verify(
+            [in] IPublicKey* key);
+
+        /**
+         * Verifies that this certificate was signed with the given public key. It
+         * Uses the signature algorithm given by the provider.
+         *
+         * @param key
+         *            PublicKey public key for which verification should be
+         *            performed.
+         * @param sigProvider
+         *            String the name of the signature provider.
+         * @exception CertificateException
+         *                if encoding errors are detected.
+         * @exception NoSuchAlgorithmException
+         *                if an unsupported algorithm is detected.
+         * @exception InvalidKeyException
+         *                if an invalid key is detected.
+         * @exception NoSuchProviderException
+         *                if the specified provider does not exists.
+         * @exception SignatureException
+         *                if signature errors are detected.
+         */
+        Verify(
+            [in] IPublicKey* key,
+            [in] String sigProvider);
+
+        /**
+         * Returns the public key corresponding to this certificate.
+         *
+         * @return the public key corresponding to this certificate.
+         */
+        GetPublicKey(
+            [out] IPublicKey** key);
+    }
+
+    } // namespace Cert
+    } // namespace Security
+    } // namespace Elastos
+}

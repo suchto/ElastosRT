@@ -1,0 +1,46 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Elastos {
+    namespace IO {
+
+    /**
+    * Wraps an existing InputStream and buffers the input. Expensive interaction with
+    * the underlying input stream is minimized, since most (smaller) requests can be
+    * satisfied by accessing the buffer alone. The drawback is that some extra space is
+    * required to hold the buffer and that copying takes place when filling that
+    * buffer, but this is usually outweighed by the performance benefits.
+    * <p>
+    * A typical application pattern for the class looks like this:
+    * BufferedInputStream buf = new BufferedInputStream(new FileInputStream("file.java"));
+    * @sa BufferedOutputStream
+    * @implement Elastos.IO.IFilterInputStream
+    */
+    /**
+     * @Involved
+     * interface ICloseable;
+     * interface IInputStream;
+     * interface IFilterInputStream;
+     */
+    interface IBufferedInputStream {
+        const Int32 DEFAULT_BUFFER_SIZE = 8192;
+    }
+
+    } // namespace IO
+    } // namespace Elastos
+}

@@ -1,0 +1,47 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Elastos {
+    namespace IO {
+
+    /**
+     * A specialization of IdentityHashMap<Object, int> for use when serializing objects.
+     * We need to assign each object we write an int 'handle' (densely packed but not starting
+     * at zero), and use the same handle any time we write the same object again.
+     */
+    interface ISerializationHandleMap {
+        Get(
+            [in] IInterface* key,
+            [out] Int32* result);
+
+        Put(
+            [in] IInterface* key,
+            [in] Int32 value,
+            [out] Int32* result);
+
+        Remove(
+            [in] IInterface* key,
+            [out] Int32* result);
+
+        IsEmpty(
+            [out] Boolean* empty);
+    }
+
+    } // namespace IO
+    } // namespace Elastos
+}

@@ -1,0 +1,83 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Org {
+    namespace Xml {
+    namespace Sax {
+
+    /**
+     * Interface for an XML filter.
+     *
+     * <blockquote>
+     * <em>This module, both source code and documentation, is in the
+     * Public Domain, and comes with <strong>NO WARRANTY</strong>.</em>
+     * See <a href='http://www.saxproject.org'>http://www.saxproject.org</a>
+     * for further information.
+     * </blockquote>
+     *
+     * <p>An XML filter is like an XML reader, except that it obtains its
+     * events from another XML reader rather than a primary source like
+     * an XML document or database.  Filters can modify a stream of
+     * events as they pass on to the final application.</p>
+     *
+     * <p>The XMLFilterImpl helper class provides a convenient base
+     * for creating SAX2 filters, by passing on all {@link org.xml.sax.EntityResolver
+     * EntityResolver}, {@link org.xml.sax.DTDHandler DTDHandler},
+     * {@link org.xml.sax.ContentHandler ContentHandler} and {@link org.xml.sax.ErrorHandler
+     * ErrorHandler} events automatically.</p>
+     *
+     * @since SAX 2.0
+     * @author David Megginson
+     * @version 2.0.1 (sax2r2)
+     * @see org.xml.sax.helpers.XMLFilterImpl
+     */
+    /**
+      * @Involve
+      * interface IXMLReader;
+      */
+    interface IXMLFilter {
+        /**
+         * Set the parent reader.
+         *
+         * <p>This method allows the application to link the filter to
+         * a parent reader (which may be another filter).  The argument
+         * may not be null.</p>
+         *
+         * @param parent The parent reader.
+         */
+        SetParent (
+            [in] IXMLReader* parent);
+
+        /**
+         * Get the parent reader.
+         *
+         * <p>This method allows the application to query the parent
+         * reader (which may be another filter).  It is generally a
+         * bad idea to perform any operations on the parent reader
+         * directly: they should all pass through this filter.</p>
+         *
+         * @return The parent filter, or null if none has been set.
+         */
+        GetParent (
+            [out] IXMLReader** parent);
+    }
+
+    } // namespace Sax
+    } // namespace Xml
+    } // namespace Org
+}

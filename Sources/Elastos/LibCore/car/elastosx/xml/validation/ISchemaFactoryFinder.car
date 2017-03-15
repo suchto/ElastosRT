@@ -1,0 +1,59 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Elastosx {
+    namespace Xml {
+    namespace Validation {
+
+    interface ISchemaFactoryFinder {
+
+    /**
+     * <p>Creates a new {@link SchemaFactory} object for the specified
+     * schema language.</p>
+     *
+     * @param schemaLanguage
+     *      See {@link SchemaFactory Schema Language} table in <code>SchemaFactory</code>
+     *      for the list of available schema languages.
+     *
+     * @return <code>null</code> if the callee fails to create one.
+     *
+     * @throws NullPointerException
+     *      If the <tt>schemaLanguage</tt> parameter is null.
+     */
+        NewFactory(
+            [in] String schemaLanguage,
+            [out] ISchemaFactory** factory);
+
+    /**
+     * <p>Creates an instance of the specified and returns it.</p>
+     *
+     * @param className
+     *      fully qualified class name to be instantiated.
+     *
+     * @return null
+     *      if it fails. Error messages will be printed by this method.
+     */
+        CreateInstance(
+            [in] String className,
+            [out] ISchemaFactory** factory);
+    }
+
+    } // namespace Validation
+    } // namespace Xml
+    } // namespace Elastosx
+}

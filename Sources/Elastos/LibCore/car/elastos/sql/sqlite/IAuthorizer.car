@@ -1,0 +1,48 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    namespace Elastos {
+    namespace Sql {
+    namespace SQLite {
+
+    interface IAuthorizer {
+        /**
+         * Callback to authorize access.
+         *
+         * @param what integer indicating type of access
+         * @param arg1 first argument (table, view, index, or trigger name)
+         * @param arg2 second argument (file, table, or column name)
+         * @param arg3 third argument (database name)
+         * @param arg4 third argument (trigger name)
+         * @return Constants.SQLITE_OK for success, Constants.SQLITE_IGNORE
+         * for don't allow access but don't raise an error, Constants.SQLITE_DENY
+         * for abort SQL statement with error.
+         */
+        Authorize(
+            [in] Int32 what,
+            [in] String arg1,
+            [in] String arg2,
+            [in] String arg3,
+            [in] String arg4,
+            [out] Int32* code);
+    }
+
+    } // namespace SQLite
+    } // namespace Sql
+    } // namespace Elastos
+}

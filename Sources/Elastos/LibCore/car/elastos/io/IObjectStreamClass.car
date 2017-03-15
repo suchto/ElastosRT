@@ -1,0 +1,141 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.IO.IObjectStreamField;
+
+    namespace Elastos {
+    namespace IO {
+    /**
+     *Represents a descriptor for identifying a class during serialization and deserialization. Information
+     *contained in the descriptor includes the name and SUID of the class as well as field names and types.
+     *Information inherited from the superclasses is also taken into account.
+     *
+     * @implements Elastos.IO.ISerializable
+     * @sa IObjectOutputStream
+     * @sa IObjectInputStream
+     * @sa IClass
+     */
+     /**
+     * @Involve
+     * interface ISerializable;
+     */
+    interface IObjectStreamClass {
+        /**
+         * Gets a field descriptor of the class represented by this class
+         * descriptor.
+         *
+         * @param name
+         *            the name of the desired field.
+         * @return the field identified by name or null if there is
+         *         no such field.
+         */
+        GetField(
+            [in] String name,
+            [out] IObjectStreamField** field);
+
+        /**
+         * Returns a collection of field descriptors for the serialized fields of
+         * the class represented by this class descriptor.
+         *
+         * @return an array of field descriptors or an array of length zero if there
+         *         are no fields in this descriptor's class.
+         */
+        GetFields(
+            [out, callee] ArrayOf<IObjectStreamField*>* fields);
+
+        /**
+         * Returns the name of the class represented by this descriptor.
+         *
+         * @return the fully qualified name of the class this descriptor represents.
+         */
+        GetName(
+            [out] String* name);
+
+        /**
+         * Returns the Serial Version User ID of the class represented by this
+         * descriptor.
+         *
+         * @return the SUID for the class represented by this descriptor.
+         */
+        GetSerialVersionUID(
+            [out] Int64* uid);
+
+        /**
+         * Returns the class (java.lang.Class) for this descriptor.
+         *
+         * @return the class in the local VM that this descriptor represents;
+         *         {@code null} if there is no corresponding class.
+         */
+        ForClass(
+            [out] ClassID* id);
+
+        IsSerializable(
+            [out] Boolean* result);
+
+        IsExternalizable(
+            [out] Boolean* result);
+
+        IsProxy(
+            [out] Boolean* result);
+
+        IsEnum(
+            [out] Boolean* result);
+
+        Fields(
+            [out, callee] ArrayOf<IObjectStreamField*>* fields);
+
+        SetFlags(
+            [in] Byte b);
+
+        GetFlags(
+            [out] Byte* b);
+    }
+
+    interface IObjectStreamClassHelper {
+        /**
+         * Returns the descriptor for a serializable class.
+         * Returns null if the class doesn't implement Serializable or Externalizable.
+         *
+         * @param cl
+         *            a java.lang.Class for which to obtain the corresponding
+         *            descriptor
+         * @return the corresponding descriptor if the class is serializable or
+         *         externalizable; null otherwise.
+         */
+        Lookup(
+            [in] InterfaceID cl,
+            [out] IObjectStreamClass** osClass);
+
+        /**
+         * Returns the descriptor for any class, whether or not the class
+         * implements Serializable or Externalizable.
+         *
+         * @param cl
+         *            a java.lang.Class for which to obtain the corresponding
+         *            descriptor
+         * @return the descriptor
+         * @since 1.6
+         */
+        LookupAny(
+            [in] InterfaceID cl,
+            [out] IObjectStreamClass** osClass);
+    }
+
+    } // namespace IO
+    } // namespace Elastos
+}

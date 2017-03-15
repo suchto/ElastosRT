@@ -1,0 +1,62 @@
+//=========================================================================
+// Copyright (C) 2012 The Elastos Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//=========================================================================
+
+module
+{
+    interface Elastos.Utility.IMap;
+
+    namespace Libcore {
+    namespace Utility {
+
+    interface IBasicLruCache {
+        /**
+         * Returns the value for {@code key} if it exists in the cache or can be
+         * created by {@code #create}. If a value was returned, it is moved to the
+         * head of the queue. This returns null if a value is not cached and cannot
+         * be created.
+         */
+        Get(
+            [in] IInterface* key,
+            [out] IInterface** ouface);
+
+        /**
+         * Caches {@code value} for {@code key}. The value is moved to the head of
+         * the queue.
+         *
+         * @return the previous value mapped by {@code key}. Although that entry is
+         *     no longer cached, it has not been passed to {@link #entryEvicted}.
+         */
+        Put(
+            [in] IInterface* key,
+            [in] IInterface* value,
+            [out] IInterface** outface);
+
+        /**
+         * Returns a copy of the current contents of the cache, ordered from least
+         * recently accessed to most recently accessed.
+         */
+        Snapshot(
+            [out] IMap** outmap);
+
+        /**
+         * Clear the cache, calling {@link #entryEvicted} on each removed entry.
+         */
+        EvictAll();
+    }
+
+    } // namespace Utility
+    } // namespace Libcore
+}
